@@ -1,6 +1,6 @@
 $(function () {
-
-    $.ajax({
+ 
+    $.ajax({ 
         url: "flooring-acc-calculation/scripts/get-flooring-acc-calculations.php",
         type: "POST",
         dataType: "json",
