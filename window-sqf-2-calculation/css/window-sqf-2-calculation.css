@@ -1,0 +1,299 @@
+.field-loader{
+    background: url( ../../images/loading-2.gif ) !important;
+    background-size: 137px 37px !important;
+    background-position: center !important;
+}
+.window-sqf-2-calculation-tab-div{
+    padding: 0 !important;
+}
+.window-sqf-2-calculation-tab-div input[type=number]::-webkit-inner-spin-button, 
+.window-sqf-2-calculation-tab-div input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+.window-sqf-2-calculation-tab-div th{
+    max-width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.window-sqf-2-calculation-tab-div select{
+    width: 100%;
+    min-width: 100px;
+    height: 37px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+}
+.window-sqf-2-calculation-tab-div .text-field{
+    width: calc(100% - 12px);
+    min-width: 100px;
+    height: 25px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+}
+.window-sqf-2-calculation-tab-div select option:first-child{
+    background: #000;
+    color: #FFF;
+    font-weight: bold;
+}
+.window-sqf-2-calculation-tab-div .text-input{
+    width: calc(100% - 106px);
+    min-width: 90px;
+    height: 25px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+    text-align: left;
+}
+.window-sqf-2-calculation-tab-div .number-input{
+    width: calc(100% - 12px);
+    min-width: 38px;
+    height: 25px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+    text-align: center;
+    float: left;
+}
+.window-sqf-2-calculation-tab-div .qty-input{
+    width: 38px;
+    height: 25px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+    text-align: center;
+    float: left;
+}
+.window-sqf-2-calculation-tab-div .price-input{
+    width: 43px;
+    height: 25px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+    text-align: right;
+}
+.window-sqf-2-calculation-tab-div .bttn-input{
+    width: 45px;
+    height: 37px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0 !important;
+}
+.window-sqf-2-calculation-tab-div .checkbox-label{
+    width: 45px;
+    height: 35px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0 !important;
+}
+.window-sqf-2-calculation-tab-div .checkbox-label .ui-button-text{
+    line-height: 24px;
+}
+
+.window-sqf-2-calculation-table{
+    width: 100%;
+}
+.window-sqf-2-calculation-table th{
+    height: 25px !important;
+    vertical-align: top !important;
+}
+.window-sqf-2-calculation-table td{
+    height: 37px !important;
+    vertical-align: middle !important;
+}
+.window-sqf-2-calculation-table td,
+.window-sqf-2-calculation-table th {
+    margin:0;
+    white-space:nowrap;
+}
+.add-window-sqf-2-calculation-quote-item-form{
+    overflow-x:auto;
+    margin-right:154px; 
+    overflow-y:visible;
+}
+.window-sqf-2-calculation-quote-items-body{
+    overflow-x: auto;
+    margin-left: 45px;
+    margin-right: 143px;
+    overflow-y: visible;
+}
+
+.window-sqf-2-calculation-table .left-fixed-column {
+    position: absolute;
+    width: 47px;
+    left: 0px;
+    margin-top: 0px;
+}
+.window-sqf-2-calculation-table .right-fixed-column {
+    position: absolute;
+    width: 150px;
+    right: 0px;
+    margin-top: -2px; 
+}
+.data-field:disabled,
+.number-input:disabled,
+[type='submit']:disabled{
+    background: #f2f2f2 !important;
+    cursor: not-allowed;
+}
+
+#window-sqf-2-calculation-quote-items-results{
+    width: 100%;
+    margin-top: 15px;
+}
+.window-sqf-2-calculation-quote-items-wrapper{
+    width: 100%;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #CCC;
+}
+.window-sqf-2-calculation-header{
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.window-sqf-2-calculation-table-more-bttn{
+    font-size: 25px !important;
+    padding-top: 0px !important;
+    padding-left: 12px !important;
+}
+.red{
+    color: red !important;
+}
+.window-sqf-2-calculation-table-more{
+    display: none;
+    width: 100%;
+}
+.window-sqf-2-calculation-table-more .table-more-notes{
+    vertical-align: top;
+    padding-left: 2px;
+    padding-bottom: 2px;
+}
+.window-sqf-2-calculation-table-more .table-more-notes .window-sqf-2-calculation-notes{
+    width: calc(100% - 14px);
+    min-height: 25px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+    float: left;
+    resize: vertical;
+}
+
+.window-sqf-2-calculation-table-more .table-more-accessories{
+    width: 33.33%;
+    vertical-align: top;
+    padding-left: 2px;
+}
+.window-sqf-2-calculation-table-more .table-more-accessories .window-sqf-2-calculation-accessories-wrapper{
+    display: block;
+    overflow: auto;
+    margin-bottom: 2px
+}
+
+.window-sqf-2-calculation-table-more .table-more-per-meters{
+    width: 33.33%;
+    vertical-align: top;
+    padding-left: 2px;
+}
+.window-sqf-2-calculation-table-more .table-more-per-meters .window-sqf-2-calculation-per-meters-wrapper{
+    display: block;
+    overflow: auto;
+    margin-bottom: 2px
+}
+.window-sqf-2-calculation-table-more .table-more-fitting-charges{
+    width: 33.33%;
+    vertical-align: top;
+    padding-left: 2px;
+}
+.window-sqf-2-calculation-table-more .table-more-fitting-charges .window-sqf-2-calculation-fitting-charges-wrapper{
+    display: block;
+    overflow: auto;
+    margin-bottom: 2px
+}
+.window-sqf-2-calculation-table-more .table-more-accessories select{
+    width: 247px !important;
+    height: 37px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+    float: left;
+}
+.window-sqf-2-calculation-table-more .table-more-per-meters select{
+    width: 247px !important;
+    height: 37px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+    float: left;
+}
+.window-sqf-2-calculation-table-more .table-more-fitting-charges select{
+    width: 294px !important;
+    height: 37px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 5px;
+    float: left;
+}
+.window-sqf-2-calculation-table-more .table-more-accessories input[type='text']:disabled,
+.window-sqf-2-calculation-table-more .table-more-per-meters input[type='text']:disabled{
+    width: 285px !important;
+    height: 25px;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+    padding: 5px;
+    float: left;
+}
+.window-sqf-2-calculation-table-more .table-more-fitting-charges input[type='text']:disabled{
+    width: 282px !important;
+    height: 25px;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+    padding: 5px;
+    float: left;
+}
+
+.window-sqf-2-calculation-add-colour-wrapper,
+.window-sqf-2-calculation-add-field-option-wrapper{
+    display: none;
+}
+.window-sqf-2-calculation-add-colour-wrapper .bttn-input,
+.window-sqf-2-calculation-add-field-option-wrapper .bttn-input{
+    margin-top: -2px !important;
+    margin-left: -2px !important;
+}
+.window-sqf-2-calculation-add-colour-option,
+.window-sqf-2-calculation-add-field-option-x{
+    background: #000 !important;
+    color: #FFF !important;
+    font-weight: bold !important;
+}
+
+.bulk-action-button-wrapper{
+    margin-top: 15px;
+}
+.bulk-action-button{
+    font-size: 14px !important;
+    height: 37px !important;
+    min-width: 47px;
+    margin-right: -3px;
+}
+.select-all-bttn{
+    width: 47px;
+    outline: none;
+}
+.print-bttn{
+    display: inline-block !important;
+    width: 60px;
+    height: 35px !important;
+}
+.print-bttn .ui-button-text{
+    line-height: 24px !important;
+}

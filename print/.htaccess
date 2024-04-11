@@ -1,0 +1,66 @@
+# Turn Rewrite Engine On
+RewriteEngine on
+#RewriteBase /
+
+RewriteRule ^office-([0-9a-zA-Z]+)$ office.php?cid=$1 [NC,L,QSA]
+RewriteRule ^customer-([0-9a-zA-Z]+)$ customer.php?cid=$1 [NC,L,QSA]
+RewriteRule ^customer-humm-([0-9a-zA-Z]+)$ customer-humm.php?cid=$1 [NC,L,QSA]
+RewriteRule ^customer-hum-([0-9a-zA-Z]+)$ customer-hum.php?cid=$1 [NC,L,QSA]
+RewriteRule ^customer-new-([0-9a-zA-Z]+)$ customer-new.php?cid=$1 [NC,L,QSA]
+RewriteRule ^office-new-([0-9a-zA-Z]+)$ office-new.php?cid=$1 [NC,L,QSA]
+RewriteRule ^customer1-([0-9a-zA-Z]+)$ customer1.php?cid=$1 [NC,L,QSA]
+RewriteRule ^customer1-hum-([0-9a-zA-Z]+)$ customer1-hum.php?cid=$1 [NC,L,QSA]
+RewriteRule ^customer1-new-([0-9a-zA-Z]+)$ customer1-new.php?cid=$1 [NC,L,QSA]
+RewriteRule ^customer3-([0-9a-zA-Z]+)$ customer3.php?cid=$1 [NC,L,QSA]
+RewriteRule ^office3-([0-9a-zA-Z]+)$ office3.php?cid=$1 [NC,L,QSA]
+
+# RewriteRule ^label-([0-9a-zA-Z]+)$ label.php?cid=$1 [NC,L,QSA]
+# RewriteRule ^label-([0-9a-zA-Z]+)$ label.php?cid=$1 [NC,L]
+
+
+RewriteRule ^office-new-([0-9a-zA-Z]+)-([0-9]+)$ office-new.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^customer1-hum-([0-9a-zA-Z]+)-([0-9]+)$ customer1-hum.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^customer1-new-([0-9a-zA-Z]+)-([0-9]+)$ customer1-new.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^customer1-([0-9a-zA-Z]+)-([0-9]+)$ customer1.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^office-([0-9a-zA-Z]+)-([0-9]+)$ office.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^customer-([0-9a-zA-Z]+)-([0-9]+)$ customer.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^customer-humm-([0-9a-zA-Z]+)-([0-9]+)$ customer-humm.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^customer-hum-([0-9a-zA-Z]+)-([0-9]+)$ customer-hum.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^customer-new-([0-9a-zA-Z]+)-([0-9]+)$ customer-new.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^trader-([0-9a-zA-Z]+)-([0-9]+)$ trader.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^office3-([0-9a-zA-Z]+)-([0-9]+)$ office3.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^customer3-([0-9a-zA-Z]+)-([0-9]+)$ customer3.php?cid=$1&layout=$2 [NC,L,QSA]
+
+
+RewriteRule ^invoice-([0-9a-zA-Z]+)-([0-9]+)$ invoice.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^invoice-hum-([0-9a-zA-Z]+)-([0-9]+)$ invoice-hum.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^invoice-new-([0-9a-zA-Z]+)-([0-9]+)$ invoice-new.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^receipt-([0-9a-zA-Z]+)-([0-9]+)$ receipt.php?cid=$1&layout=$2 [NC,L,QSA]
+# RewriteRule ^label-([0-9a-zA-Z]+)-([0-9]+)$ label.php?cid=$1&layout=$2 [NC,L,QSA]
+
+RewriteRule ^check-measure-([0-9a-zA-Z]+)-([0-9]+)$ check-measure.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^installer-([0-9a-zA-Z]+)-([0-9]+)$ installer.php?cid=$1&layout=$2 [NC,L,QSA]
+
+RewriteRule ^label-([0-9a-z-]+)-([0-9a-z]+)-([0-9a-zA-Z]+)$ label.php?calculation=$1&code=$2&cid=$3 [NC,L,QSA]
+RewriteRule ^order-sheet-([0-9a-z-]+)-([0-9a-z]+)-([0-9a-zA-Z]+)$ order-sheet.php?calculation=$1&code=$2&cid=$3 [NC,L,QSA]
+RewriteRule ^wholesale-office-([0-9a-zA-Z]+)$ wholesale-office.php?cid=$1 [NC,L,QSA]
+RewriteRule ^wholesale-customer-([0-9a-zA-Z]+)$ wholesale-customer.php?cid=$1 [NC,L,QSA]
+RewriteRule ^wholesale-office-new-([0-9a-zA-Z]+)$ wholesale-office-new.php?cid=$1 [NC,L,QSA]
+RewriteRule ^wholesale-customer1-([0-9a-zA-Z]+)$ wholesale-customer1.php?cid=$1 [NC,L,QSA]
+
+
+RewriteRule ^wholesale-office-new-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-office-new.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^wholesale-customer1-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-customer1.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^wholesale-office-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-office.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^wholesale-customer-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-customer.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^wholesale-trader-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-trader.php?cid=$1&layout=$2 [NC,L,QSA]
+
+
+RewriteRule ^wholesale-invoice-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-invoice.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^wholesale-receipt-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-receipt.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^wholesale-label-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-label.php?cid=$1&layout=$2 [NC,L,QSA]
+
+RewriteRule ^wholesale-check-measure-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-check-measure.php?cid=$1&layout=$2 [NC,L,QSA]
+RewriteRule ^wholesale-installer-([0-9a-zA-Z]+)-([0-9]+)$ wholesale-installer.php?cid=$1&layout=$2 [NC,L,QSA]
+
+RewriteRule ^wholesale-order-sheet-([0-9a-z-]+)-([0-9a-z]+)-([0-9a-zA-Z]+)$ wholesale-order-sheet.php?calculation=$1&code=$2&cid=$3 [NC,L,QSA]
