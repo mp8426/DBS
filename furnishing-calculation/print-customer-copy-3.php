@@ -69,7 +69,7 @@ while ($stmt_1->fetch()) {
     $furnishing_calculation_table_header = '<span nobr="true">'
             . '<h3>' . $furnishing_calculation_name . '</h3>'
             . '<table cellpadding="4" cellspacing="0" style="text-align: center; background-color: #f1f1f1;">'
-            . '<tr style="font-size: 0.9em; font-weight: bold;">'
+            . '<tr style="font-size: 1em; font-weight: bold;">'
             . '<th style="border: 0.5px solid #000000;">#</th>'
             . $field_th_left
             . $location_th
@@ -85,6 +85,8 @@ while ($stmt_1->fetch()) {
     $quote_item_no = 1;
     $furnishing_calculation_quote_items = "";
     $furnishing_calculation_quote_item_price_sub_total = 0;
+    $furnishing_calculation_quote_item_accessory_sub_total = 0;
+    $furnishing_calculation_quote_item_per_meter_sub_total = 0;
 
     $query_3 = "SELECT code, location, cost, markup, notes, price, discount FROM furnishing_calculation_quote_items WHERE furnishing_calculation_code = ? AND cid = ? ORDER BY id ASC";
 
@@ -146,12 +148,13 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_2->fetch()) {
 
                 $furnishing_calculation_quote_item_accessories .= '<tr>'
-                        . '<td style="border: 0.5px solid #000000;">' . $quote_item_accessory_no . '. ' . $furnishing_calculation_quote_item_accessory_name . '</td>'
-                        . '<td style="border: 0.5px solid #000000; text-align: right;">' . $furnishing_calculation_quote_item_accessory_price . '</td>'
-                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . $furnishing_calculation_quote_item_accessory_qty . '</td>'
-                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . number_format($furnishing_calculation_quote_item_accessory_total, 2) . '</td>'
+                        . '<td style="border: 0.5px solid #000000; ">' . $quote_item_accessory_no . '. ' . $furnishing_calculation_quote_item_accessory_name . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: right; ">' . $furnishing_calculation_quote_item_accessory_price . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center; ">' . $furnishing_calculation_quote_item_accessory_qty . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center; ">' . number_format($furnishing_calculation_quote_item_accessory_total, 2) . '</td>'
                         . '</tr>';
                 $quote_item_accessory_no++;
+                $furnishing_calculation_quote_item_accessory_sub_total = $furnishing_calculation_quote_item_accessory_total + $furnishing_calculation_quote_item_accessory_sub_total;
             }
             $stmt_3_2->close();
 
@@ -169,12 +172,13 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_3->fetch()) {
 
                 $furnishing_calculation_quote_item_per_meters .= '<tr>'
-                        . '<td style="border: 0.5px solid #000000;">' . $quote_item_per_meter_no . '. ' . $furnishing_calculation_quote_item_per_meter_name . '</td>'
-                        . '<td style="border: 0.5px solid #000000; text-align: right;">' . $furnishing_calculation_quote_item_per_meter_price . '</td>'
-                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . $furnishing_calculation_quote_item_per_meter_width . '</td>'
-                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . number_format($furnishing_calculation_quote_item_per_meter_total, 2) . '</td>'
+                        . '<td style="border: 0.5px solid #000000; ">' . $quote_item_per_meter_no . '. ' . $furnishing_calculation_quote_item_per_meter_name . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: right; ">' . $furnishing_calculation_quote_item_per_meter_price . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center; ">' . $furnishing_calculation_quote_item_per_meter_width . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center; ">' . number_format($furnishing_calculation_quote_item_per_meter_total, 2) . '</td>'
                         . '</tr>';
                 $quote_item_per_meter_no++;
+                $furnishing_calculation_quote_item_per_meter_sub_total = $furnishing_calculation_quote_item_per_meter_total +  $furnishing_calculation_quote_item_per_meter_sub_total;
             }
             $stmt_3_3->close();
 
@@ -192,8 +196,8 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_4->fetch()) {
 
                 $furnishing_calculation_quote_item_fitting_charges .= '<tr>'
-                        . '<td style="border: 0.5px solid #000000;">' . $quote_item_fitting_charge_no . '. ' . $furnishing_calculation_quote_item_fitting_charge_name . '</td>'
-                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . $furnishing_calculation_quote_item_fitting_charge_price . '</td>'
+                        . '<td style="border: 0.5px solid #000000; ">' . $quote_item_fitting_charge_no . '. ' . $furnishing_calculation_quote_item_fitting_charge_name . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center; ">' . $furnishing_calculation_quote_item_fitting_charge_price . '</td>'
                         . '</tr>';
                 $quote_item_fitting_charge_no++;
             }
@@ -239,10 +243,10 @@ while ($stmt_1->fetch()) {
                     $furnishing_calculation_quote_item_accessories_table = '<td style="border: 0.5px solid #000000;">'
                             . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
                             . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
-                            . '<th style="width: 60%; border: 0.5px solid #000000;">#. Accessory</th>'
-                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
-                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Qty</th>'
-                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
+                            . '<th style="width: 60%; border: 0.5px solid #000000; ">#. Accessory</th>'
+                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000; ">Price</th>'
+                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000; ">Qty</th>'
+                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000; ">Total</th>'
                             . '</tr>'
                             . $furnishing_calculation_quote_item_accessories
                             . '</table>'
@@ -256,10 +260,10 @@ while ($stmt_1->fetch()) {
                     $furnishing_calculation_quote_item_per_meters_table = '<td style="border: 0.5px solid #000000;">'
                             . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
                             . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
-                            . '<th style="width: 60%; border: 0.5px solid #000000;">#. Per Meter</th>'
-                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
-                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Width</th>'
-                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
+                            . '<th style="width: 60%; border: 0.5px solid #000000; ">#. Extra’s</th>'
+                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000; ">Price</th>'
+                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000; ">Width</th>'
+                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000; ">Total</th>'
                             . '</tr>'
                             . $furnishing_calculation_quote_item_per_meters
                             . '</table>'
@@ -273,8 +277,8 @@ while ($stmt_1->fetch()) {
                     $furnishing_calculation_quote_item_fitting_charges_table = '<td style="border: 0.5px solid #000000;">'
                             . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
                             . '<tr style="font-weight: bold; background-color: #f2f2f2; border: 0.5px solid #000000;">'
-                            . '<th style="border: 0.5px solid #000000;">#. Fitting Charge</th>'
-                            . '<th style="text-align: center; border: 0.5px solid #000000;">Price</th>'
+                            . '<th style="border: 0.5px solid #000000; ">#. Fitting Charge</th>'
+                            . '<th style="text-align: center; border: 0.5px solid #000000; ">Price</th>'
                             . '</tr>'
                             . $furnishing_calculation_quote_item_fitting_charges
                             . '</table>'
@@ -291,7 +295,7 @@ while ($stmt_1->fetch()) {
                 ) {
 
                     $table_more .= '<table cellpadding="0" cellspacing="0" style="text-align: left;" nobr="true">'
-                            . '<tr style="font-size: 0.9em;">'
+                            . '<tr style="font-size: 1em;">'
                             . $furnishing_calculation_quote_item_accessories_table
                             . $furnishing_calculation_quote_item_per_meters_table
                             . $furnishing_calculation_quote_item_fitting_charges_table
@@ -305,7 +309,7 @@ while ($stmt_1->fetch()) {
             }
 
             $furnishing_calculation_quote_items .= '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
-                    . '<tr style="font-size: 0.9em;">'
+                    . '<tr style="font-size: 1em;">'
                     . '<td style="border: 0.5px solid #000000;">' . $quote_item_no . '</td>'
                     . $field_td_left
                     . $location_td
@@ -321,37 +325,50 @@ while ($stmt_1->fetch()) {
             if ($group_discount_print[1] === '1') {
 
                 $furnishing_calculation_quote_item_discount_value = $furnishing_calculation_quote_item_price_sub_total * $furnishing_calculation_quote_item_discount / 100;
-                $furnishing_calculation_quote_item_price_total = $furnishing_calculation_quote_item_price_sub_total - $furnishing_calculation_quote_item_discount_value;
+                $furnishing_calculation_quote_item_price_sub_total_x = $furnishing_calculation_quote_item_price_sub_total - $furnishing_calculation_quote_item_discount_value;
+                $furnishing_calculation_quote_item_price_total = $furnishing_calculation_quote_item_price_sub_total_x + $furnishing_calculation_quote_item_accessory_sub_total + $furnishing_calculation_quote_item_per_meter_sub_total;
 
-                $furnishing_calculation_total_table_colspan = $field_td_num_rows + $price_td_num_rows + $cost_td_num_rows + $markup_td_num_rows + 1;
+                $furnishing_calculation_total_table_colspan = $table_td_num_rows + $field_td_num_rows + $price_td_num_rows;
                 $furnishing_calculation_total = '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
-                        . '<tr style="font-size: 0.9em;">'
-                        . '<th style="width:800px; border-top: 0.5px solid #616060; border-left: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; font-size: 1.9em; text-align: center; font-weight: 14px; vertical-align: middle;" rowspan="3">'.$furnishing_calculation_name.'</th>'
-                        . '<th style="width:100px;  border-top: 0.5px solid #616060; border-right: 0.5px solid #616060; color:#303030; text-align: right; font-weight: bold;" colspan="' . $furnishing_calculation_total_table_colspan . '">Sub Total </th>'
-                        . '<th style="width:100px; border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($furnishing_calculation_quote_item_price_sub_total, 2) . '</th>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $furnishing_calculation_total_table_colspan . '">Sub Total (Blinds)</th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($furnishing_calculation_quote_item_price_sub_total, 2) . '</th>'
                         . '</tr>'
-                        . '<tr style="font-size: 0.9em;">'
-                        . '<th style="border-top: 0.5px solid #616060; border-right: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#277cbe; text-align: right; font-weight: bold;" colspan="' . $furnishing_calculation_total_table_colspan . '">Discount (' . $furnishing_calculation_quote_item_discount . '%) </th>'
-                        . '<th style="border: 0.5px solid #000000; color:#277cbe; text-align: right; font-weight: bold;">-' . number_format($furnishing_calculation_quote_item_discount_value, 2) . '</th>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold; color:red;" colspan="' . $furnishing_calculation_total_table_colspan . '">Discount (' . $furnishing_calculation_quote_item_discount . '%) </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold; color:red;">-' . number_format($furnishing_calculation_quote_item_discount_value, 2) . '</th>'
                         . '</tr>'
-                        // . '<tr style="font-size: 0.9em;">'
-                        // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $furnishing_calculation_total_table_colspan . '">Total </th>'
-                        // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($furnishing_calculation_quote_item_price_total, 2) . '</th>'
-                        // . '</tr>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;" colspan="' . $furnishing_calculation_total_table_colspan . '">Total (Blinds)</th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;">' . number_format($furnishing_calculation_quote_item_price_sub_total_x, 2) . '</th>'
+                        . '</tr>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;" colspan="' . $furnishing_calculation_total_table_colspan . '">Accessories </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;">' . number_format($furnishing_calculation_quote_item_accessory_sub_total, 2) . '</th>'
+                        . '</tr>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;" colspan="' . $furnishing_calculation_total_table_colspan . '">Extras </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;">' . number_format($furnishing_calculation_quote_item_per_meter_sub_total, 2) . '</th>'
+                        . '</tr>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;" colspan="' . $furnishing_calculation_total_table_colspan . '">Total</th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;">' . number_format($furnishing_calculation_quote_item_price_total, 2) . '</th>'
+                        . '</tr>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;" colspan="' . $furnishing_calculation_total_table_colspan . '">GST</th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right;">' . number_format($furnishing_calculation_quote_item_price_total/10, 2) . '</th>'
+                        . '</tr>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $furnishing_calculation_total_table_colspan . '">Total GST Inc </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($furnishing_calculation_quote_item_price_total + ($furnishing_calculation_quote_item_price_total/10), 2) . '</th>'
+                        . '</tr>'
                         . '</table>';
             } else {
                 $furnishing_calculation_total = '';
             }
         }
 
-        $furnishing_calculation_quote_tables .= $furnishing_calculation_table_header . $furnishing_calculation_quote_items . $furnishing_calculation_total . "<div></div>";
-        // Add the item to the $price_list array
-        $price_list[] = array(
-            'p_name' => $furnishing_calculation_name,
-            'quantity' => $quote_item_no,
-            'price' => number_format($furnishing_calculation_quote_item_price_sub_total, 2)
-        ); 
-    
+        $furnishing_calculation_quote_tables .='<span>' . $furnishing_calculation_table_header . $furnishing_calculation_quote_items . $furnishing_calculation_total . "</span><div></div>";
     } else {
         $furnishing_calculation_quote_tables .= "";
     }

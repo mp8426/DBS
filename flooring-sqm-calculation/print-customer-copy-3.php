@@ -371,18 +371,17 @@ while ($stmt_1->fetch()) {
                 $flooring_sqm_calculation_total_table_colspan = $table_td_num_rows + $field_td_num_rows + $price_td_num_rows + $total_td_num_rows;
                 $flooring_sqm_calculation_total = '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
                         . '<tr style="font-size: 0.9em;">'
-                        . '<th style="width:800px; border-top: 0.5px solid #616060; border-left: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; font-size: 1.9em; text-align: center; font-weight: 14px; vertical-align: middle;" rowspan="3">'.$flooring_sqm_calculation_name.'</th>'
-                        . '<th style="width:100px;  border-top: 0.5px solid #616060; border-right: 0.5px solid #616060; color:#303030; text-align: right; font-weight: bold;" colspan="' . $flooring_sqm_calculation_total_table_colspan . '">Sub Total </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $flooring_sqm_calculation_total_table_colspan . '">Sub Total </th>'
                         . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($flooring_sqm_calculation_quote_item_price_sub_total, 2) . '</th>'
                         . '</tr>'
                         . '<tr style="font-size: 0.9em;">'
-                        . '<th style="border-top: 0.5px solid #616060; border-right: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#277cbe; text-align: right; font-weight: bold;" colspan="' . $flooring_sqm_calculation_total_table_colspan . '">Discount (' . $flooring_sqm_calculation_quote_item_discount . '%) </th>'
-                        . '<th style="border: 0.5px solid #000000; color:#277cbe; text-align: right; font-weight: bold;">-' . number_format($flooring_sqm_calculation_quote_item_discount_value, 2) . '</th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $flooring_sqm_calculation_total_table_colspan . '">Discount (' . $flooring_sqm_calculation_quote_item_discount . '%) </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">-' . number_format($flooring_sqm_calculation_quote_item_discount_value, 2) . '</th>'
                         . '</tr>'
-                        // . '<tr style="font-size: 0.9em;">'
-                        // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $flooring_sqm_calculation_total_table_colspan . '">Total </th>'
-                        // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($flooring_sqm_calculation_quote_item_price_total, 2) . '</th>'
-                        // . '</tr>'
+                        . '<tr style="font-size: 0.9em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $flooring_sqm_calculation_total_table_colspan . '">Total </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($flooring_sqm_calculation_quote_item_price_total, 2) . '</th>'
+                        . '</tr>'
                         . '</table>';
             } else {
                 $flooring_sqm_calculation_total = '';
@@ -390,13 +389,6 @@ while ($stmt_1->fetch()) {
         }
 
         $flooring_sqm_calculation_quote_tables .= $flooring_sqm_calculation_table_header . $flooring_sqm_calculation_quote_items . $flooring_sqm_calculation_total . "<div></div>";
-        // Add the item to the $price_list array
-        $price_list[] = array(
-            'p_name' => $flooring_sqm_calculation_name,
-            'quantity' => $quote_item_no,
-            'price' => number_format($flooring_sqm_calculation_quote_item_price_sub_total, 2)
-        ); 
-    
     } else {
         $flooring_sqm_calculation_quote_tables .= "";
     }

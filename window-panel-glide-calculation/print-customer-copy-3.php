@@ -71,78 +71,56 @@ while ($stmt_1->fetch()) {
     $stmt_2->close();
 
     $window_panel_glide_calculation_table_header = '<span nobr="true">'
-        . '<h3>' . $window_panel_glide_calculation_name . '</h3>'
-        . '<table cellpadding="4" cellspacing="0" style="text-align: center; background-color: #f1f1f1;">'
-        . '<tr style="font-size: 0.9em; font-weight: bold;">'
-        . '<th style="border: 0.5px solid #000000;">#</th>'
-        . $field_th_left
-        . $table_th
-        . $field_th_right
-        . $price_th
-        . '</tr>'
-        . '</table>'
-        . '</span>';
+            . '<h3>' . $window_panel_glide_calculation_name . '</h3>'
+            . '<table cellpadding="4" cellspacing="0" style="text-align: center; background-color: #f1f1f1;">'
+            . '<tr style="font-size: 0.9em; font-weight: bold;">'
+            . '<th style="border: 0.5px solid #000000;">#</th>'
+            . $field_th_left
+            . $table_th
+            . $field_th_right
+            . $price_th
+            . '</tr>'
+            . '</table>'
+            . '</span>';
 
 
-    //$row_no = 1;
+    $quote_item_no = 1;
     $window_panel_glide_calculation_quote_items = "";
     $window_panel_glide_calculation_quote_item_price_sub_total = 0;
 
-    $query_3 = "SELECT code, row_no, location, width_x, drop_x, type, material, colour, panel, notes, price, qty, total, discount FROM window_panel_glide_calculation_quote_items WHERE window_panel_glide_calculation_code = ? AND cid = ? ORDER BY -row_position DESC";
+    $query_3 = "SELECT code, location, width_x, drop_x, type, material, colour, panel, notes, price, discount FROM window_panel_glide_calculation_quote_items WHERE window_panel_glide_calculation_code = ? AND cid = ? ORDER BY id ASC";
 
     $stmt_3 = $mysqli->prepare($query_3);
     $stmt_3->bind_param('ss', $window_panel_glide_calculation_code, $cid);
     $stmt_3->execute();
-    $stmt_3->bind_result($window_panel_glide_calculation_quote_item_code, $row_no,  $window_panel_glide_calculation_quote_item_location, $window_panel_glide_calculation_quote_item_width, $window_panel_glide_calculation_quote_item_drop, $window_panel_glide_calculation_quote_item_type, $window_panel_glide_calculation_quote_item_material, $window_panel_glide_calculation_quote_item_colour, $window_panel_glide_calculation_quote_item_panel, $window_panel_glide_calculation_quote_item_notes, $window_panel_glide_calculation_quote_item_price, $window_panel_glide_calculation_quote_item_qty, $window_panel_glide_calculation_quote_item_total, $window_panel_glide_calculation_quote_item_discount);
+    $stmt_3->bind_result($window_panel_glide_calculation_quote_item_code, $window_panel_glide_calculation_quote_item_location, $window_panel_glide_calculation_quote_item_width, $window_panel_glide_calculation_quote_item_drop, $window_panel_glide_calculation_quote_item_type, $window_panel_glide_calculation_quote_item_material, $window_panel_glide_calculation_quote_item_colour, $window_panel_glide_calculation_quote_item_panel, $window_panel_glide_calculation_quote_item_notes, $window_panel_glide_calculation_quote_item_price, $window_panel_glide_calculation_quote_item_discount);
     $stmt_3->store_result();
 
     if ($stmt_3->num_rows()) {
 
         while ($stmt_3->fetch()) {
 
-            $window_panel_glide_calculation_quote_item_price_sub_total += $window_panel_glide_calculation_quote_item_total;
+            $window_panel_glide_calculation_quote_item_price_sub_total = $window_panel_glide_calculation_quote_item_price_sub_total + $window_panel_glide_calculation_quote_item_price;
 
             $field_td_right = '';
             $field_td_left = '';
 
-            // $query_3_1 = "SELECT window_panel_glide_calculation_quote_item_fields.name, "
-            //         . "window_panel_glide_calculation_fields.side "
-            //         . "FROM window_panel_glide_calculation_quote_item_fields "
-            //         . "JOIN window_panel_glide_calculation_fields ON "
-            //         . "window_panel_glide_calculation_fields.code = window_panel_glide_calculation_quote_item_fields.window_panel_glide_calculation_field_code "
-            //         . "WHERE "
-            //         . "window_panel_glide_calculation_fields.customer_copy = 1 AND "
-            //         . "window_panel_glide_calculation_quote_item_fields.window_panel_glide_calculation_quote_item_code = ? AND "
-            //         . "window_panel_glide_calculation_quote_item_fields.window_panel_glide_calculation_code = ? AND "
-            //         . "window_panel_glide_calculation_quote_item_fields.cid = ? "
-            //         . "ORDER BY window_panel_glide_calculation_fields.position ASC";
-
-            // $stmt_3_1 = $mysqli->prepare($query_3_1);
-            // $stmt_3_1->bind_param('sss', $window_panel_glide_calculation_quote_item_code, $window_panel_glide_calculation_code, $cid);
-            // $stmt_3_1->execute();
-            // $stmt_3_1->bind_result($window_panel_glide_calculation_quote_item_field_name, $window_panel_glide_calculation_field_side);
-            // $stmt_3_1->store_result();
-            // $field_td_num_rows = $stmt_3_1->num_rows;
-
             $query_3_1 = "SELECT window_panel_glide_calculation_quote_item_fields.name, "
-                . "window_panel_glide_calculation_quote_item_fields.price, "
-                . "window_panel_glide_calculation_quote_item_fields.sub_options, "
-                . "window_panel_glide_calculation_fields.side "
-                . "FROM window_panel_glide_calculation_fields "
-                . "LEFT JOIN window_panel_glide_calculation_quote_item_fields ON "
-                . "window_panel_glide_calculation_quote_item_fields.window_panel_glide_calculation_quote_item_code = ? AND "
-                . "window_panel_glide_calculation_quote_item_fields.window_panel_glide_calculation_code = ? AND "
-                . "window_panel_glide_calculation_quote_item_fields.cid = ? AND "
-                . "window_panel_glide_calculation_fields.code = window_panel_glide_calculation_quote_item_fields.window_panel_glide_calculation_field_code "
-                . "WHERE "
-                . "window_panel_glide_calculation_fields.customer_copy = 1 AND "
-                . "window_panel_glide_calculation_fields.window_panel_glide_calculation_code = ? "
-                . "ORDER BY window_panel_glide_calculation_fields.position ASC";
+                    . "window_panel_glide_calculation_fields.side "
+                    . "FROM window_panel_glide_calculation_quote_item_fields "
+                    . "JOIN window_panel_glide_calculation_fields ON "
+                    . "window_panel_glide_calculation_fields.code = window_panel_glide_calculation_quote_item_fields.window_panel_glide_calculation_field_code "
+                    . "WHERE "
+                    . "window_panel_glide_calculation_fields.customer_copy = 1 AND "
+                    . "window_panel_glide_calculation_quote_item_fields.window_panel_glide_calculation_quote_item_code = ? AND "
+                    . "window_panel_glide_calculation_quote_item_fields.window_panel_glide_calculation_code = ? AND "
+                    . "window_panel_glide_calculation_quote_item_fields.cid = ? "
+                    . "ORDER BY window_panel_glide_calculation_fields.position ASC";
 
             $stmt_3_1 = $mysqli->prepare($query_3_1);
-            $stmt_3_1->bind_param('ssss', $window_panel_glide_calculation_quote_item_code, $window_panel_glide_calculation_code, $cid, $window_panel_glide_calculation_code);
+            $stmt_3_1->bind_param('sss', $window_panel_glide_calculation_quote_item_code, $window_panel_glide_calculation_code, $cid);
             $stmt_3_1->execute();
-            $stmt_3_1->bind_result($window_panel_glide_calculation_quote_item_field_name, $window_panel_glide_calculation_quote_item_field_price, $sub_options, $window_panel_glide_calculation_field_side);
+            $stmt_3_1->bind_result($window_panel_glide_calculation_quote_item_field_name, $window_panel_glide_calculation_field_side);
             $stmt_3_1->store_result();
             $field_td_num_rows = $stmt_3_1->num_rows;
 
@@ -170,11 +148,11 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_2->fetch()) {
 
                 $window_panel_glide_calculation_quote_item_accessories .= '<tr>'
-                    . '<td style="border: 0.5px solid #000000;">' . $quote_item_accessory_no . '. ' . $window_panel_glide_calculation_quote_item_accessory_name . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: right;">' . $window_panel_glide_calculation_quote_item_accessory_price . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . $window_panel_glide_calculation_quote_item_accessory_qty . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . number_format($window_panel_glide_calculation_quote_item_accessory_total, 2) . '</td>'
-                    . '</tr>';
+                        . '<td style="border: 0.5px solid #000000;">' . $quote_item_accessory_no . '. ' . $window_panel_glide_calculation_quote_item_accessory_name . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: right;">' . $window_panel_glide_calculation_quote_item_accessory_price . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . $window_panel_glide_calculation_quote_item_accessory_qty . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . number_format($window_panel_glide_calculation_quote_item_accessory_total, 2) . '</td>'
+                        . '</tr>';
                 $quote_item_accessory_no++;
             }
             $stmt_3_2->close();
@@ -193,11 +171,11 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_3->fetch()) {
 
                 $window_panel_glide_calculation_quote_item_per_meters .= '<tr>'
-                    . '<td style="border: 0.5px solid #000000;">' . $quote_item_per_meter_no . '. ' . $window_panel_glide_calculation_quote_item_per_meter_name . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: right;">' . $window_panel_glide_calculation_quote_item_per_meter_price . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . $window_panel_glide_calculation_quote_item_per_meter_width . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . number_format($window_panel_glide_calculation_quote_item_per_meter_total, 2) . '</td>'
-                    . '</tr>';
+                        . '<td style="border: 0.5px solid #000000;">' . $quote_item_per_meter_no . '. ' . $window_panel_glide_calculation_quote_item_per_meter_name . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: right;">' . $window_panel_glide_calculation_quote_item_per_meter_price . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . $window_panel_glide_calculation_quote_item_per_meter_width . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . number_format($window_panel_glide_calculation_quote_item_per_meter_total, 2) . '</td>'
+                        . '</tr>';
                 $quote_item_per_meter_no++;
             }
             $stmt_3_3->close();
@@ -216,9 +194,9 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_4->fetch()) {
 
                 $window_panel_glide_calculation_quote_item_fitting_charges .= '<tr>'
-                    . '<td style="border: 0.5px solid #000000;">' . $quote_item_fitting_charge_no . '. ' . $window_panel_glide_calculation_quote_item_fitting_charge_name . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . $window_panel_glide_calculation_quote_item_fitting_charge_price . '</td>'
-                    . '</tr>';
+                        . '<td style="border: 0.5px solid #000000;">' . $quote_item_fitting_charge_no . '. ' . $window_panel_glide_calculation_quote_item_fitting_charge_name . '</td>'
+                        . '<td style="border: 0.5px solid #000000; text-align: center;">' . $window_panel_glide_calculation_quote_item_fitting_charge_price . '</td>'
+                        . '</tr>';
                 $quote_item_fitting_charge_no++;
             }
             $stmt_3_4->close();
@@ -250,12 +228,12 @@ while ($stmt_1->fetch()) {
                 if ($window_panel_glide_calculation_quote_item_notes && $note_print[1] === '1') {
 
                     $window_panel_glide_calculation_quote_item_notes_table = '<table cellpadding="4" cellspacing="0" style="text-align: left;" nobr="true">'
-                        . '<tr>'
-                        . '<td style="border: 0.5px solid #000000;">'
-                        . nl2br($window_panel_glide_calculation_quote_item_notes)
-                        . '</td>'
-                        . '</tr>'
-                        . '</table>';
+                            . '<tr>'
+                            . '<td style="border: 0.5px solid #000000;">'
+                            . nl2br($window_panel_glide_calculation_quote_item_notes)
+                            . '</td>'
+                            . '</tr>'
+                            . '</table>';
                 } else {
                     $window_panel_glide_calculation_quote_item_notes_table = "";
                 }
@@ -263,16 +241,16 @@ while ($stmt_1->fetch()) {
                 if ($window_panel_glide_calculation_quote_item_accessories && $accessories_select === 1 && $accessory_print[1] === '1') {
 
                     $window_panel_glide_calculation_quote_item_accessories_table = '<td style="border: 0.5px solid #000000;">'
-                        . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
-                        . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
-                        . '<th style="width: 60%; border: 0.5px solid #000000;">#. Accessory</th>'
-                        . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
-                        . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Qty</th>'
-                        . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
-                        . '</tr>'
-                        . $window_panel_glide_calculation_quote_item_accessories
-                        . '</table>'
-                        . '</td>';
+                            . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
+                            . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
+                            . '<th style="width: 60%; border: 0.5px solid #000000;">#. Accessory</th>'
+                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
+                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Qty</th>'
+                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
+                            . '</tr>'
+                            . $window_panel_glide_calculation_quote_item_accessories
+                            . '</table>'
+                            . '</td>';
                 } else {
                     $window_panel_glide_calculation_quote_item_accessories_table = "";
                 }
@@ -280,16 +258,16 @@ while ($stmt_1->fetch()) {
                 if ($window_panel_glide_calculation_quote_item_per_meters && $per_meters_select === 1 && $per_meter_print[1] === '1') {
 
                     $window_panel_glide_calculation_quote_item_per_meters_table = '<td style="border: 0.5px solid #000000;">'
-                        . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
-                        . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
-                        . '<th style="width: 60%; border: 0.5px solid #000000;">#. Per Meter</th>'
-                        . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
-                        . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Width</th>'
-                        . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
-                        . '</tr>'
-                        . $window_panel_glide_calculation_quote_item_per_meters
-                        . '</table>'
-                        . '</td>';
+                            . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
+                            . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
+                            . '<th style="width: 60%; border: 0.5px solid #000000;">#. Per Meter</th>'
+                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
+                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Width</th>'
+                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
+                            . '</tr>'
+                            . $window_panel_glide_calculation_quote_item_per_meters
+                            . '</table>'
+                            . '</td>';
                 } else {
                     $window_panel_glide_calculation_quote_item_per_meters_table = "";
                 }
@@ -297,33 +275,32 @@ while ($stmt_1->fetch()) {
                 if ($window_panel_glide_calculation_quote_item_fitting_charges && $fitting_charges_select === 1 && $fitting_charge_print[1] === '1') {
 
                     $window_panel_glide_calculation_quote_item_fitting_charges_table = '<td style="border: 0.5px solid #000000;">'
-                        . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
-                        . '<tr style="font-weight: bold; background-color: #f2f2f2; border: 0.5px solid #000000;">'
-                        . '<th style="border: 0.5px solid #000000;">#. Fitting Charge</th>'
-                        . '<th style="text-align: center; border: 0.5px solid #000000;">Price</th>'
-                        . '</tr>'
-                        . $window_panel_glide_calculation_quote_item_fitting_charges
-                        . '</table>'
-                        . '</td>';
+                            . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
+                            . '<tr style="font-weight: bold; background-color: #f2f2f2; border: 0.5px solid #000000;">'
+                            . '<th style="border: 0.5px solid #000000;">#. Fitting Charge</th>'
+                            . '<th style="text-align: center; border: 0.5px solid #000000;">Price</th>'
+                            . '</tr>'
+                            . $window_panel_glide_calculation_quote_item_fitting_charges
+                            . '</table>'
+                            . '</td>';
                 } else {
                     $window_panel_glide_calculation_quote_item_fitting_charges_table = "";
                 }
 
                 $table_more = $window_panel_glide_calculation_quote_item_notes_table;
 
-                if (
-                    $accessories_select === 1 && $accessory_print[1] === '1' && $window_panel_glide_calculation_quote_item_accessories ||
-                    $per_meters_select === 1 && $per_meter_print[1] === '1' && $window_panel_glide_calculation_quote_item_per_meters ||
-                    $fitting_charges_select === 1 && $fitting_charge_print[1] === '1' && $window_panel_glide_calculation_quote_item_fitting_charges
+                if ($accessories_select === 1 && $accessory_print[1] === '1' && $window_panel_glide_calculation_quote_item_accessories ||
+                        $per_meters_select === 1 && $per_meter_print[1] === '1' && $window_panel_glide_calculation_quote_item_per_meters ||
+                        $fitting_charges_select === 1 && $fitting_charge_print[1] === '1' && $window_panel_glide_calculation_quote_item_fitting_charges
                 ) {
 
                     $table_more .= '<table cellpadding="0" cellspacing="0" style="text-align: left;" nobr="true">'
-                        . '<tr style="font-size: 0.9em;">'
-                        . $window_panel_glide_calculation_quote_item_accessories_table
-                        . $window_panel_glide_calculation_quote_item_per_meters_table
-                        . $window_panel_glide_calculation_quote_item_fitting_charges_table
-                        . '</tr>'
-                        . '</table>';
+                            . '<tr style="font-size: 0.9em;">'
+                            . $window_panel_glide_calculation_quote_item_accessories_table
+                            . $window_panel_glide_calculation_quote_item_per_meters_table
+                            . $window_panel_glide_calculation_quote_item_fitting_charges_table
+                            . '</tr>'
+                            . '</table>';
                 } else {
                     $table_more .= "";
                 }
@@ -332,16 +309,16 @@ while ($stmt_1->fetch()) {
             }
 
             $window_panel_glide_calculation_quote_items .= '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
-                . '<tr style="font-size: 0.9em;">'
-                . '<td style="border: 0.5px solid #000000;">' . $row_no . '</td>'
-                . $field_td_left
-                . $table_td
-                . $field_td_right
-                . $price_td
-                . '</tr>'
-                . '</table>'
-                . $table_more;  
-            //$row_no++;
+                    . '<tr style="font-size: 0.9em;">'
+                    . '<td style="border: 0.5px solid #000000;">' . $quote_item_no . '</td>'
+                    . $field_td_left
+                    . $table_td
+                    . $field_td_right
+                    . $price_td
+                    . '</tr>'
+                    . '</table>'
+                    . $table_more;
+            $quote_item_no++;
 
             if ($group_discount_print[1] === '1') {
 
@@ -350,34 +327,25 @@ while ($stmt_1->fetch()) {
 
                 $window_panel_glide_calculation_total_table_colspan = $table_td_num_rows + $field_td_num_rows + $price_td_num_rows;
                 $window_panel_glide_calculation_total = '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
-                    . '<tr style="font-size: 0.9em;">'
-                    . '<th style="width:800px; border-top: 0.5px solid #616060; border-left: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; font-size: 1.9em; text-align: center; font-weight: 14px; vertical-align: middle;" rowspan="3">'.$window_panel_glide_calculation_name.'</th>'
-                    . '<th style="width:100px;  border-top: 0.5px solid #616060; border-right: 0.5px solid #616060; color:#303030; text-align: right; font-weight: bold;" colspan="' . $window_panel_glide_calculation_total_table_colspan . '">Sub Total </th>'
-                    . '<th style="width:100px; border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($window_panel_glide_calculation_quote_item_price_sub_total, 2) . '</th>'
-                    . '</tr>'
-                    . '<tr style="font-size: 0.9em;">'
-                    . '<th style="border-top: 0.5px solid #616060; border-right: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#277cbe; text-align: right; font-weight: bold;" colspan="' . $window_panel_glide_calculation_total_table_colspan . '">Discount (' . $window_panel_glide_calculation_quote_item_discount . '%) </th>'
-                    . '<th style="border: 0.5px solid #000000; color:#277cbe; text-align: right; font-weight: bold;">-' . number_format($window_panel_glide_calculation_quote_item_discount_value, 2) . '</th>'
-                    . '</tr>'
-                    // . '<tr style="font-size: 0.9em;">'
-                    // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_panel_glide_calculation_total_table_colspan . '">Total </th>'
-                    // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($window_panel_glide_calculation_quote_item_price_total, 2) . '</th>'
-                    // . '</tr>'
-                    . '</table>';
+                        . '<tr style="font-size: 0.9em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_panel_glide_calculation_total_table_colspan . '">Sub Total </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($window_panel_glide_calculation_quote_item_price_sub_total, 2) . '</th>'
+                        . '</tr>'
+                        . '<tr style="font-size: 0.9em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_panel_glide_calculation_total_table_colspan . '">Discount (' . $window_panel_glide_calculation_quote_item_discount . '%) </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">-' . number_format($window_panel_glide_calculation_quote_item_discount_value, 2) . '</th>'
+                        . '</tr>'
+                        . '<tr style="font-size: 0.9em;">'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_panel_glide_calculation_total_table_colspan . '">Total </th>'
+                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($window_panel_glide_calculation_quote_item_price_total, 2) . '</th>'
+                        . '</tr>'
+                        . '</table>';
             } else {
                 $window_panel_glide_calculation_total = '';
             }
         }
 
         $window_panel_glide_calculation_quote_tables .= $window_panel_glide_calculation_table_header . $window_panel_glide_calculation_quote_items . $window_panel_glide_calculation_total . "<div></div>";
-
-        // Add the item to the $price_list array
-        $price_list[] = array(
-            'p_name' => $window_panel_glide_calculation_name,
-            'quantity' => $row_no,
-            'price' => number_format($window_panel_glide_calculation_quote_item_price_sub_total, 2)
-        );
-
     } else {
         $window_panel_glide_calculation_quote_tables .= "";
     }
