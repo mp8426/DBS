@@ -70,7 +70,7 @@ while ($stmt_1->fetch()) {
     $stmt_2->close();
 
     $window_price_sheet_8_calculation_table_header = '<span nobr="true">'
-        . '<h3>' . $window_price_sheet_8_calculation_name . '</h3>'
+        . '<h1 style="color:#404040;">' . $window_price_sheet_8_calculation_name . '</h1>'
         . '<table cellpadding="4" cellspacing="0" style="text-align: center; background-color: #f1f1f1;">'
         . '<tr style="font-size: 0.9em; font-weight: bold;">'
         . '<th style="border: 0.5px solid #000000;">#</th>'
@@ -345,18 +345,19 @@ while ($stmt_1->fetch()) {
 
                 $window_price_sheet_8_calculation_total_table_colspan = $table_td_num_rows + $field_td_num_rows + $price_td_num_rows;
                 $window_price_sheet_8_calculation_total = '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
-                    . '<tr style="font-size: 0.9em;">'
-                    . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_price_sheet_8_calculation_total_table_colspan . '">Sub Total </th>'
-                    . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($window_price_sheet_8_calculation_quote_item_price_sub_total, 2) . '</th>'
+                    . '<tr style="font-size: 1em;">'
+                    . '<th style="border: 0.5px solid #787877; width:80%; text-align: center; font-size:15px; vertical-align:middle;" rowspan="2" colspan="' . $window_price_sheet_8_calculation_total_table_colspan . '"> <strong>'. $window_price_sheet_8_calculation_name .'</strong> - <i>' . number_format($window_price_sheet_8_calculation_quote_item_price_total + ($window_price_sheet_8_calculation_quote_item_price_total/10), 2) . ' GST INC</i> </th>'
+                    . '<th style="border: 0.5px solid #787877; width:10%; text-align: right; font-weight: bold;" colspan="' . $window_price_sheet_8_calculation_total_table_colspan . '">Sub Total (Blinds)</th>'
+                    . '<th style="border: 0.5px solid #787877; width:10%; text-align: right; font-weight: bold;">' . number_format($window_price_sheet_8_calculation_quote_item_price_sub_total, 2) . '</th>'
                     . '</tr>'
-                    . '<tr style="font-size: 0.9em;">'
-                    . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_price_sheet_8_calculation_total_table_colspan . '">Discount (' . $window_price_sheet_8_calculation_quote_item_discount . '%) </th>'
-                    . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">-' . number_format($window_price_sheet_8_calculation_quote_item_discount_value, 2) . '</th>'
+                    . '<tr style="font-size: 1em;">'
+                    . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold; color:#2d82c4;" colspan="' . $window_price_sheet_8_calculation_total_table_colspan . '">Discount (' . $window_price_sheet_8_calculation_quote_item_discount . '%) </th>'
+                    . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold; color:#2d82c4;">-' . number_format($window_price_sheet_8_calculation_quote_item_discount_value, 2) . '</th>'
                     . '</tr>'
-                    . '<tr style="font-size: 0.9em;">'
-                    . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_price_sheet_8_calculation_total_table_colspan . '">Total </th>'
-                    . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($window_price_sheet_8_calculation_quote_item_price_total, 2) . '</th>'
-                    . '</tr>'
+                    // . '<tr style="font-size: 0.9em;">'
+                    // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_price_sheet_8_calculation_total_table_colspan . '">Total </th>'
+                    // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($window_price_sheet_8_calculation_quote_item_price_total, 2) . '</th>'
+                    // . '</tr>'
                     . '</table>';
             } else {
                 $window_price_sheet_8_calculation_total = '';
@@ -364,6 +365,12 @@ while ($stmt_1->fetch()) {
         }
 
         $window_price_sheet_8_calculation_quote_tables .= $window_price_sheet_8_calculation_table_header . $window_price_sheet_8_calculation_quote_items . $window_price_sheet_8_calculation_total . "<div></div>";
+    
+        $price_list[] = array(
+            'p_name' => $window_price_sheet_8_calculation_name,
+            'quantity' => $quote_item_no,
+            'price' => number_format($window_price_sheet_8_calculation_quote_item_price_sub_total, 2)
+        );
     } else {
         $window_price_sheet_8_calculation_quote_tables .= "";
     }

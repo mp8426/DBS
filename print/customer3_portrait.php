@@ -134,8 +134,8 @@ $stmt_10->bind_param('s', $cid);
 $stmt_10->execute();
 $stmt_10->bind_result($deposit_detail_description, $deposit_detail_amount, $deposit_detail_date);
 while ($stmt_10->fetch()) {
-    $deposit_details .= '<table border="0" cellspacing="0" cellpadding="5"><tr><td style="width: 110px; color:#303030; text-align: left;">' . $deposit_detail_description . ' - ' . $deposit_detail_date . '</td>
-    <td style="width: 80; color:#303030; text-align: right; line-height: 22px;">' . number_format($deposit_detail_amount, 2) . '</td></tr></table>';
+    $deposit_details .= '<table border="0" cellspacing="0" cellpadding="5"><tr><td style="width: 70%; color:#303030; text-align: left;">' . $deposit_detail_description . ' - ' . $deposit_detail_date . '</td>
+    <td style="width: 30%; color:#303030; text-align: right; line-height: 22px;">' . number_format($deposit_detail_amount, 2) . '</td></tr></table>';
 }
 $stmt_10->close();
 
@@ -267,25 +267,25 @@ class MYPDF extends TCPDF
             . '<img src="../profile/logo.jpg" style="height: 48px; width: auto;">'
             . '</div>'
             . '</td>'
-            . '<td style="border: 1px solid #000000; background-color: #F2F2F2; text-align: center; width: 280px;">'
+            . '<td style="border: 0.5px solid #787877; background-color: #F2F2F2; text-align: center; width: 280px;">'
             . '<div>'
             . '<div style="font-weight: bold;">' . $business_phone . '</div>'
             . '<div>' . $business_address_1 . ' ' . $business_address_2 . ' ' . $business_postcode . ' ' . $business_suburb . '</div>'
             . '</div>'
             . '</td>'
-            . '<td style="border: 1px solid #000000; background-color: #F2F2F2; text-align: center; width: 240px;">'
+            . '<td style="border: 0.5px solid #787877; background-color: #F2F2F2; text-align: center; width: 240px;">'
             . '<div>'
             . '<div style="font-weight: bold;">' . $business_web . '</div>'
             . '<div>' . $business_email . '</div>'
             . '</div>'
             . '</td>'
-            . '<td style="border: 1px solid #000000; text-align: center; width: 150px;">'
+            . '<td style="border: 0.5px solid #787877; text-align: center; width: 150px;">'
             . '<div>'
             . '<div style="font-weight: bold;">Salesperson</div>'
             . '<div>' . $assinged_staff_name . '</div>'
             . '</div>'
             . '</td>'
-            . '<td style="border: 1px solid #000000; text-align: center; width: 151px;">'
+            . '<td style="border: 0.5px solid #787877; text-align: center; width: 151px;">'
             . '<div>'
             . '<div style="font-weight: bold;">Quotation No</div>'
             . '<div>' . $cid . '</div>'
@@ -301,7 +301,7 @@ class MYPDF extends TCPDF
     // disable auto-page-break
     $this->SetAutoPageBreak(false, 0);
     // set bacground image
-    $this->Image($background_path, 0, 0, 297, 210, '', '', '', false, 300, '', false, false, 0);
+    $this->Image($background_path, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
     // restore auto-page-break status
     $this->SetAutoPageBreak($auto_page_break, $bMargin);
 
@@ -310,34 +310,34 @@ class MYPDF extends TCPDF
     //   with icons
     $html = '<table border="0" cellspacing="6" cellpadding="0" style="font-size: 0.9em; color: #303030; line-height: 8px;">'
     . '<tr>'
-    .'<td style="width:70px;"></td>'
-    . '<td style="width: 430px; vertical-align: top;">'
-        . '<div style=" text-align: center; vertical-align: middle; padding: 10px;">'  . '<img src="quote_template/logo.png" style="width: auto;">'
+    .'<td style="width:1%;"></td>'
+    . '<td style="width: 57%; vertical-align: top;">'
+        . '<div style=" text-align: center; vertical-align: middle; padding: 10px; line-height:30px;">'  . '<img src="quote_template/logo.png" style="width: auto;">'
         . '</div>'
     . '</td>'
-    . '<td style="width:40px;"></td>'
-    . '<td style=" width: 370px;">'
+    . '<td style="width:4%;"></td>'
+    . '<td style=" width: 37%;">'
         . '<div style="padding: 8px;">'
-        . '<div style="line-height:12px; font-size:13px;"><strong>' . $business_address_1 . ' ' . $business_address_2 . '</strong><br>' . $business_postcode . ' ' . $business_suburb . '</div>'
-        . '<div style="line-height:12px;  font-size:13px;">' . $business_phone . '</div>'
-        . '<div style="line-height:12px;  font-size:13px;">' . $business_email . '</div>'
-        . '<div style="line-height:12px;  font-size:13px;">' . $business_web . '</div>'
+        . '<div style="line-height:13px; font-size:13px;"><strong>' . $business_address_1 . '</strong> <br>' . $business_address_2 . ' ' . $business_postcode . ' ' . $business_suburb . '</div>'
+        . '<div style="line-height:11px;  font-size:13px;">' . $business_phone . '</div>'
+        . '<div style="line-height:11px;  font-size:13px;">' . $business_email . '</div>'
+        . '<div style="line-height:11px;  font-size:13px;">' . $business_web . '</div>'
         .'<div style="font-size:16px; text-align: center; vertical-align: middle; ">'
-            . '<div style="font-weight: 6px; font-size:18px; text-align: center; vertical-align: middle; padding: 10px;">Quotation No : '.$cid.'</div>'
+            . '<div style="font-weight: 6px; font-size:14px; text-align: center; vertical-align: middle; padding: 10px;"><strong>Quote No</strong> : '.$cid.'</div>'
         .'</div>'
         . '</div>'
     . '</td>'
-    . '<td style="width:90px;"></td>'
+    . '<td style="width:1%;"></td>'
     . '</tr>'
     . '</table>';
 
     $this->SetFillColor(229, 229, 229); // RGB values for #e5e5e5
-    $this->RoundedRect(155, 38.9, 120, 8.5, 2, '#e5e5e5', 'F');
+    $this->RoundedRect(124, 37.9, 77, 8.5, 2, '#e5e5e5', 'F');
 
-    $this->Image('quote_template/location.png', 159, 10, 3.4, 3.4, '', '', '', false, 300, '', false, false, 1, false, false, false);
-    $this->Image('quote_template/phone.png', 159, 19.3, 3.4, 3.4, '', '', '', false, 300, '', false, false, 1, false, false, false);
-    $this->Image('quote_template/mail.png', 159, 26, 3.4, 3.4, '', '', '', false, 300, '', false, false, 1, false, false, false);
-    $this->Image('quote_template/web.png', 159, 32, 3.4, 3.4, '', '', '', false, 300, '', false, false, 1, false, false, false);
+    $this->Image('quote_template/location.png', 124, 10, 3.4, 3.4, '', '', '', false, 300, '', false, false, 1, false, false, false);
+    $this->Image('quote_template/phone.png', 124, 20, 3.4, 3.4, '', '', '', false, 300, '', false, false, 1, false, false, false);
+    $this->Image('quote_template/mail.png', 124, 26.1, 3.4, 3.4, '', '', '', false, 300, '', false, false, 1, false, false, false);
+    $this->Image('quote_template/web.png', 124, 31.7, 3.4, 3.4, '', '', '', false, 300, '', false, false, 1, false, false, false);
 
 				
         $this->writeHTMLCell($w = 0, $h = 10, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = 'M', $autopadding = FALSE);
@@ -410,32 +410,32 @@ if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
 $pdf->SetFont('helvetica', '', 10);
 
 // add a page
-$pdf->AddPage('L', 'A4');
+$pdf->AddPage('P', 'A4');
 
     $test_count = 0; 
     
-    $quote_summary = '<table cellspacing="0" cellpadding="3" style="color: #525252; width:350px;">'
+    $quote_summary = '<table cellspacing="0" cellpadding="3" style="color: #525252; width:100%;">'
     .'<tr>'
-    . '<td style="font-size: 1em; border-bottom: 0.5px solid #616060; color: #277cbe; width: 145px; text-align: left;"><strong>Quote Summary:</strong></td>'
-    . '<td style="font-size: 1em; border-bottom: 0.5px solid #616060; color:#303030; width: 100px; text-align: center;"><strong>Quantity:</strong></td>'
-    . '<td style="font-size: 1em; border-bottom: 0.5px solid #616060; color:#303030; width: 100px; text-align: center;"><strong>Price:</strong></td>'
+    . '<td style="font-size: 1em; border-bottom: 0.5px solid #616060; color: #277cbe; width: 50%; text-align: left;"><strong>Quote Summary:</strong></td>'
+    . '<td style="font-size: 1em; border-bottom: 0.5px solid #616060; color:#303030; width: 25%; text-align: center;"><strong>Quantity:</strong></td>'
+    . '<td style="font-size: 1em; border-bottom: 0.5px solid #616060; color:#303030; width: 25%; text-align: center;"><strong>Price:</strong></td>'
     .'</tr>';
 
     foreach ($price_list as $key) {
         
             $quote_summary .='<tr>'
-            .'<td style="font-size: 1em; border-top: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; width: 145px; text-align: left;"><strong>' . $key['p_name'] . '</strong></td>'
-            .'<td style="font-size: 1em; border-top: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; width: 100px; text-align: center;">' . $key['quantity'] . '</td>'
-            .'<td style="font-size: 1em; border-top: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; width: 100px; text-align: center;">' . $key['price'] . '</td>'
+            .'<td style="font-size: 1em; border-top: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; width: 50%; text-align: left;"><strong>' . $key['p_name'] . '</strong></td>'
+            .'<td style="font-size: 1em; border-top: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; width:25%; text-align: center;">' . $key['quantity'] . '</td>'
+            .'<td style="font-size: 1em; border-top: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; width: 25%; text-align: center;">' . $key['price'] . '</td>'
             .'</tr>';
     }
     
     // Add the specific record after all items are printed
     $quote_summary .= '
     <tr>
-        <td style="font-size: 1em; border-top: 0.5px solid #616060; color: #277cbe; width: 145px; text-align: left;"><strong>Total Package Price</strong></td>
-        <td style="font-size: 1em; border-top: 0.5px solid #616060; color:#303030; width: 100px; text-align: center;"><strong></strong></td>
-        <td style="font-size: 1em; border-top: 0.5px solid #616060; color:#303030; width: 100px; text-align: center;"><strong>' . number_format($grand_total, 2) . '</strong></td>
+        <td style="font-size: 1em; border-top: 0.5px solid #616060; color: #277cbe; width: 50%; text-align: left;"><strong>Total Package Price</strong></td>
+        <td style="font-size: 1em; border-top: 0.5px solid #616060; color:#303030; width: 25%; text-align: center;"><strong></strong></td>
+        <td style="font-size: 1em; border-top: 0.5px solid #616060; color:#303030; width: 25%; text-align: center;"><strong>' . number_format($grand_total, 2) . '</strong></td>
     </tr>';
     $quote_summary  .='</table>';
 
@@ -446,23 +446,23 @@ $pdf->AddPage('L', 'A4');
         . '<td>'
         . '<table cellspacing="0" cellpadding="3">'
         . '<tr>'
-        . '<td style="font-size: 0.8em; border-bottom: 0.5px solid #616060; background-color:#eaeaea; color:#303030; margin-top:5px; width: 175px; text-align: center; line-height: 12px; height: 18px;"><strong>Date:</strong><br>' . $q_created_date . '</td>'
-        . '<td style="font-size: 0.8em; border-bottom: 0.5px solid #616060; background-color:#eaeaea; color:#303030; margin-top:5px; width: 175px; text-align: center; line-height: 12px; height: 18px;"><strong>Appointment:</strong><br>' . $assign_date . '</td>'
-        . '<td style="font-size: 0.8em; border-bottom: 0.5px solid #616060; background-color:#eaeaea; color:#303030; margin-top:5px; width: 175px; text-align: center; line-height: 12px; height: 18px;"><strong>Lead Source:</strong><br>' . $c_hdfu . '</td>'
-        . '<td style="font-size: 0.8em; border-bottom: 0.5px solid #616060; background-color:#eaeaea; color:#303030; margin-top:5px; width: 175px; text-align: left; line-height: 12px; height: 18px;"><strong>Office Use:</strong></td>'
-        . '<td style="font-size: 1.0em; font-weight: normal;  width: 305px; text-align: center; line-height: 22px; color:white; background-color:#2d82c4; ">CUSTOMER COPY</td>'
+        . '<td style="font-size: 0.8em; border-bottom: 0.5px solid #616060; background-color:#eaeaea; color:#303030; margin-top:5px; width: 17.5%; text-align: center; line-height: 12px; height: 18px;"><strong>Date:</strong><br>' . $q_created_date . '</td>'
+        . '<td style="font-size: 0.8em; border-bottom: 0.5px solid #616060; background-color:#eaeaea; color:#303030; margin-top:5px; width: 17.5%; text-align: center; line-height: 12px; height: 18px;"><strong>Appointment:</strong><br>' . $assign_date . '</td>'
+        . '<td style="font-size: 0.8em; border-bottom: 0.5px solid #616060; background-color:#eaeaea; color:#303030; margin-top:5px; width: 17.5%; text-align: center; line-height: 12px; height: 18px;"><strong>Lead Source:</strong><br>' . $c_hdfu . '</td>'
+        . '<td style="font-size: 0.8em; border-bottom: 0.5px solid #616060; background-color:#eaeaea; color:#303030; margin-top:5px; width: 17.5%; text-align: left; line-height: 12px; height: 18px;"><strong>Office Use:</strong></td>'
+        . '<td style="font-size: 1.0em; font-weight: normal;  width: 30.5%; text-align: center; line-height: 22px; color:white; background-color:#2d82c4; ">CUSTOMER COPY</td>'
         . '</tr>'
         
         . '<tr>'
-        . '<td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 350px; text-align: left;"><strong>Customer Details:</strong> ' . $c_contact_name . '</td>'
+        . '<td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 35%; text-align: left;"><strong>Customer Details:</strong> ' . $c_contact_name . '</td>'
         // . '<td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 350px; text-align: left;"><strong>Location Details:</strong> ' . $q_name_1 . '</td>'
         //. '<td style="font-size: 0.8em; border: 0.5px solid #616060; color: #277cbe; width: 150px; text-align: left;"><strong>Quote Summary:</strong></td>'
         //. '<td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 100px; text-align: left;"><strong>Quantity:</strong></td>'
         //. '<td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 100px; text-align: left;"><strong>Price:</strong></td>'
         
-        . '<td style="padding: 0; font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 350px; text-align: left;" rowspan="6">' . $quote_summary . '</td>'
+        . '<td style="padding: 0; font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 35%; text-align: left;" rowspan="6">' . $quote_summary . '</td>'
 
-        . '<td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 305px; text-align: left;" rowspan="6"><strong>Records:</strong><br><br>' . nl2br($records) . '</td>'
+        . '<td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 30.5%; text-align: left;" rowspan="6"><strong>Records:</strong><br><br>' . nl2br($records) . '</td>'
         . '</tr>';
 
         
@@ -470,21 +470,21 @@ $pdf->AddPage('L', 'A4');
         
 
         $html .='<tr>
-                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 350px; text-align: left;"><strong>Name:</strong> ' . $c_name_1 . ' ' . $c_name_2 . '</td>
+                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 35%; text-align: left;"><strong>Name:</strong> ' . $c_name_1 . ' ' . $c_name_2 . '</td>
                 </tr>'.
                 '<tr>
-                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 350px; text-align: left;"><strong>Address:</strong> ' . $customer_address . '</td> 
+                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 35%; text-align: left;"><strong>Address:</strong> ' . $customer_address . '</td> 
                 </tr>'.
                 '<tr>
-                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 175px; text-align: left;"><strong>Suburb:</strong> ' . $c_suburb . '</td>
-                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 175px; text-align: left;">Postcode: ' . $c_postcode . '</td>
+                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 17.5%; text-align: left;"><strong>Suburb:</strong> ' . $c_suburb . '</td>
+                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 17.5%; text-align: left;">Postcode: ' . $c_postcode . '</td>
                 </tr>'.
                 '<tr>
-                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 350px; text-align: left;"><strong>Email:</strong> ' . $c_email . '</td>
+                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 35%; text-align: left;"><strong>Email:</strong> ' . $c_email . '</td>
                 </tr>
                 <tr> 
-                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 175px; text-align: left;"><strong>Phone:</strong> ' . $c_phone . '</td>
-                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 175px; text-align: left;">Mobile: ' . $c_mobile . '</td>
+                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 17.5%; text-align: left;"><strong>Phone:</strong> ' . $c_phone . '</td>
+                    <td style="font-size: 0.8em; border: 0.5px solid #616060; color:#303030; width: 17.5%; text-align: left;">Mobile: ' . $c_mobile . '</td>
                 </tr>';
         
                 
@@ -512,8 +512,8 @@ $html .= '</td>'
     if (!empty($calc_acc_price)) {
     
         $ex_tr .= '<tr>'
-            . '<td style="border: 0.5px solid #616060; color:#303030; width: 195px;"><strong>ACCESSORIES</strong></td>'
-            . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px;">' . number_format($calc_acc_price, 2) . '</td>'
+            . '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%;"><strong>ACCESSORIES</strong></td>'
+            . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' . number_format($calc_acc_price, 2) . '</td>'
             . '</tr>';
     
         $rowspan = $rowspan + 2;
@@ -522,8 +522,8 @@ $html .= '</td>'
     if (!empty($calc_per_met_price)) {
     
         $ex_tr .= '<tr>'
-            . '<td style="border: 0.5px solid #616060; color:#303030; width: 195px;"><strong>PER METERS</strong></td>'
-            . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px;">' . number_format($calc_per_met_price, 2) . '</td>'
+            . '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%;"><strong>PER METERS</strong></td>'
+            . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' . number_format($calc_per_met_price, 2) . '</td>'
             . '</tr>';
     
         $rowspan++;
@@ -532,8 +532,8 @@ $html .= '</td>'
     if (!empty($calc_fit_cha_price) || !empty($total_fitting_charge)) {
     
         $ex_tr .= '<tr>'
-            . '<td style="border: 0.5px solid #616060; color:#303030; width: 195px;"><strong>FITTING CHARGE</strong></td>'
-            . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px;">' . number_format($calc_fit_cha_price + $total_fitting_charge, 2) . '</td>'
+            . '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%;"><strong>FITTING CHARGE</strong></td>'
+            . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' . number_format($calc_fit_cha_price + $total_fitting_charge, 2) . '</td>'
             . '</tr>';
     
         $rowspan++;
@@ -549,8 +549,8 @@ $html .= '</td>'
     if (!empty($ex_tr)) {
     
         $ex_tr .= '<tr>'
-            . '<td style="border: 0.5px solid #616060; color:#303030; width: 195px;"><strong>SUB TOTAL</strong></td>'
-            . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px;">' . number_format($sub_total, 2) . '</td>'
+            . '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%;"><strong>SUB TOTAL</strong></td>'
+            . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' . number_format($sub_total, 2) . '</td>'
             . '</tr>';
     
         $rowspan++;
@@ -561,8 +561,8 @@ $html .= '</td>'
     if (!empty($discount_1_val)) {
     
         $ex_tr_2 .= '<tr>'
-            . '<td style="border: 0.5px solid #616060; color: #277cbe width: 195px;"><strong>DISCOUNT (' . $discount_1 . '%)</strong></td>'
-            . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px;">' . number_format($discount_1_val, 2) . '</td>'
+            . '<td style="border: 0.5px solid #616060; color: #277cbe width: 19.5%;"><strong>DISCOUNT (' . $discount_1 . '%)</strong></td>'
+            . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' . number_format($discount_1_val, 2) . '</td>'
             . '</tr>';
     
         $rowspan++;
@@ -571,8 +571,8 @@ $html .= '</td>'
     if (!empty($discount_2)) {
     
         $ex_tr_2 .= '<tr>'
-            . '<td style="border: 0.5px solid #616060; color: #277cbe; width: 195px;"><strong>DISCOUNT ( ' . $currency_sign . ' )</strong></td>'
-            . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px;">' . number_format($discount_2, 2) . '</td>'
+            . '<td style="border: 0.5px solid #616060; color: #277cbe; width: 19.5%;"><strong>DISCOUNT ( ' . $currency_sign . ' )</strong></td>'
+            . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' . number_format($discount_2, 2) . '</td>'
             . '</tr>';
     
         $rowspan++;
@@ -582,8 +582,8 @@ $html .= '</td>'
     $rowspan_reduced = $rowspan-3;
     $rowspan_increased = $rowspan+1;
     
-    $deposit_tr = '<td style="border: 0.5px solid #616060; color:#303030; width: 195px; font-size: 15px;"><br><br><strong>BALANCE</strong></td>'
-        . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px; font-size: 15px;"><br><br><strong>' . number_format(round($balance, 2), 2) . '</strong></td>';
+    $deposit_tr = '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%; font-size: 15px;"><br><br><strong>BALANCE</strong></td>'
+        . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%; font-size: 15px;"><br><br><strong>' . number_format(round($balance, 2), 2) . '</strong></td>';
     
     $balance_tr = '';
     
@@ -591,12 +591,12 @@ $html .= '</td>'
     
         $bottom_rowspan = 'rowspan="2"';
     
-        $deposit_tr = '<td style="border: 0.5px solid #616060; color:#303030; width: 115px;"><strong>DEPOSIT</strong></td>'
-            . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 190px;">' . number_format($deposit, 2) . '</td>';
+        $deposit_tr = '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%;"><strong>DEPOSIT</strong></td>'
+            . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' . number_format($deposit, 2) . '</td>';
     
         $balance_tr = '<tr>'
-            . '<td style="border: 0.5px solid #616060; color:#303030; width: 115px; font-size: 15px;"><br><br><strong>BALANCE</strong></td>'
-            . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 190px; font-size: 15px;"><br><br><strong>' . number_format(round($balance, 2), 2) . '</strong></td>'
+            . '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%; font-size: 15px;"><br><br><strong>BALANCE</strong></td>'
+            . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%; font-size: 15px;"><br><br><strong>' . number_format(round($balance, 2), 2) . '</strong></td>'
             . '</tr>';
     }
 
@@ -610,52 +610,52 @@ $html .= '</td>'
     . '<table cellpadding="5" style="border: 0.5px solid #616060; color:#303030;">'
     . '<tr>'
     // . '<td style="border: 0.5px solid #616060; color:#303030; width: 500px; text-align: left;" rowspan="' . $rowspan . '"><br><br>' . nl2br($instruction) . '</td>'
-    . '<td style="border: 0.5px solid #616060; color:#303030; width: 500px; text-align: left;" rowspan="' . $rowspan_reduced . '"><br><br>' . $signature . '</td>'
-    .'<td style="border: 0.5px solid #616060; color:#303030; width: 200px; text-align: left; font-weight: bold;"> DEPOSIT HISTORY </td>'
-    . '<td style="border-right: 1px solid #616060; border-bottom: 1px solid #616060; text-align: center; width: 305px;"><strong>Payment Method</strong></td>'
+    . '<td style="border: 0.5px solid #616060; color:#303030; width: 50%; text-align: left;" rowspan="' . $rowspan_reduced . '"><br><br>' . $signature . '</td>'
+    .'<td style="border: 0.5px solid #616060; color:#303030; width: 20%; text-align: left; font-weight: bold;"> DEPOSIT HISTORY </td>'
+    . '<td style="border-right: 0.5px solid #787877; border-bottom: 0.5px solid #787877; text-align: center; width: 30%;"><strong>Payment Method</strong></td>'
     . '</tr>'
 
     . '<tr>'
-    . '<td style="border: 0.5px solid #616060; color:#303030; width: 200px; text-align: center; font-size: 0.9em;" rowspan="' . $rowspan_increased . '">' . $payment_credit_card_text . '<br>' . $deposit_details . '</td>'
-    . '<td style="border-right: 1px solid #616060; text-align: center; width: 305px;" colspan="2">' . $bank_account_name . '<br>' . $bank_account_no . '<br>' . $bsb_no . '</td>'
+    . '<td style="border: 0.5px solid #616060; color:#303030; width: 20%; text-align: center; font-size: 0.9em;" rowspan="' . $rowspan_increased . '">' . $payment_credit_card_text . '<br>' . $deposit_details . '</td>'
+    . '<td style="border-right: 0.5px solid #787877; text-align: center; width: 30%;" colspan="2">' . $bank_account_name . '<br>' . $bank_account_no . '<br>' . $bsb_no . '</td>'
     . '</tr>'
     
     . '<tr>'
-    . '<td style="border: 0.5px solid #616060; color:#303030; text-align: center; width: 305px;"><strong>Quote No. Required with electronic deposits</strong></td>'
+    . '<td style="border: 0.5px solid #616060; color:#303030; text-align: center; width: 30%;"><strong>Quote No. Required with electronic deposits</strong></td>'
     . '</tr>'
     
     . '<tr>'
-    . '<td style="border: 0.5px solid #616060; width: 195px;"><strong>TOTAL PRICE</strong></td>'
-    . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px;">' .number_format($total_1, 2) . '</td>'
+    . '<td style="border: 0.5px solid #616060; width: 19.5%;"><strong>TOTAL PRICE</strong></td>'
+    . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' .number_format($total_1, 2) . '</td>'
     . '</tr>'
     . $ex_tr
     // . '<tr>'
     // . '<td style="border: 0.5px solid #616060; color:#303030; width: 115px;"><strong>MARKUP ( ' . $extras . '% )</strong></td>'
-    // . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 190px;">' . number_format($extras_amount, 2) . '</td>'
+    // . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 190px;">' . number_format($extras_amount, 2) . '</td>'
     // . '</tr>'
     // . '<tr>'
     // . '<td style="border: 0.5px solid #616060; color:#303030; width: 115px;"><strong>TOTAL + MARKUP</strong></td>'
-    // . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 190px;">' . number_format($sub_total, 2) . '</td>'
+    // . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 190px;">' . number_format($sub_total, 2) . '</td>'
     // . '</tr>'
     . '<tr>'
-    . '<td style="border-top: 1px solid #616060; border-right: 1px solid #616060; width: 500px; text-align: center; line-height:18px;" rowspan="4"><strong>THAT BY ACCEPTING THE QUOTE YOU HAVE READ OUR TERMS & CONDITIONS </strong> <br> </td>'
-    . '<td style="border: 0.5px solid #616060; color:#303030; width: 195px;"><strong>' . $tax_name . '</strong></td>'
-    . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px;">' . number_format($tax, 2) . '</td>'
+    . '<td style="border-top: 1px solid #616060; border-right: 0.5px solid #787877; width: 50%; text-align: center; line-height:18px;" rowspan="4"><strong>THAT BY ACCEPTING THE QUOTE YOU HAVE READ OUR TERMS & CONDITIONS </strong> <br> </td>'
+    . '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%;"><strong>' . $tax_name . '</strong></td>'
+    . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' . number_format($tax, 2) . '</td>'
     . '</tr>'
     // . $ex_tr_2
     . '<tr>'
-    . '<td style="border: 0.5px solid #616060; color:#303030; width: 195px;"><strong>Package DISCOUNTS</strong></td>'
-    . '<td style="border-bottom: 1px solid #616060; color: #277cbe; text-align: right; width: 110px;">' . number_format($grand_total, 2) . '</td>'
+    . '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%;"><strong>Package DISCOUNTS</strong></td>'
+    . '<td style="border-bottom: 0.5px solid #787877; color: #277cbe; text-align: right; width: 11.0%;">' . number_format($grand_total, 2) . '</td>'
     . '</tr>'
 
     . '<tr>'
     . '<td style="border: 0.5px solid #616060; color:#303030 width: 155px;"><strong><img src="../profile/humm-logo.jpg" style="height: 15px; width: auto;"></strong></td>'
-    . '<td style="border-bottom: 1px solid #000000; text-align: right; width: 110px; ' . $humm_methad . '"><strong>' . number_format($grand_total_defult + ($grand_total_defult * 0.15), 2) . '</strong></td>'
+    . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%; ' . $humm_methad . '"><strong>' . number_format($grand_total_defult + ($grand_total_defult * 0.15), 2) . '</strong></td>'
     . '</tr>'
 
     . '<tr>'
-    . '<td style="border: 0.5px solid #616060; color:#303030; width: 195px;"><strong>CASH, CARD OR EFT PRICE</strong></td>'
-    . '<td style="border-bottom: 1px solid #616060; text-align: right; width: 110px;">' . number_format($grand_total, 2) . '</td>'
+    . '<td style="border: 0.5px solid #616060; color:#303030; width: 19.5%;"><strong>CASH, CARD OR EFT PRICE</strong></td>'
+    . '<td style="border-bottom: 0.5px solid #787877; text-align: right; width: 11.0%;">' . number_format($grand_total, 2) . '</td>'
     . '</tr>'
     
     . '</table>'
@@ -672,11 +672,11 @@ $html .= '</td>'
 
     $html .= '<table cellspacing="0" cellpadding="0" style="font-size: 0.67em;" nobr="true">'
     . '<tr>'
-    . '<td style="width:500px;" align="left">'
-    . '<table cellpadding="1" style="border: 1px solid #fff;">'
+    . '<td style="width:50%;" align="left">'
+    . '<table cellpadding="1" style="border: 0.5px solid #fff;">'
     . '<tr>'
-    . '<td style="width:70px; font-weight: bold;" >1. Definitions</td>'
-    . '<td style="text-align: right; width: 430px;"></td>'
+    . '<td style="width:15%; font-weight: bold;" >1. Definitions</td>'
+    . '<td style="text-align: right; width: 85%;"></td>'
     . '</tr>'
     . '<tr>'
     . '<td style="text-align: right;" >I.</td>'
@@ -939,14 +939,14 @@ Australia, except to the extent by those Acts where applicable.</td>'
     . '</tr>'
     . '</table>'
     . '</td>'
-    . '<td style="width:500px;">'
-    . '<table cellpadding="1" style="border: 1px solid #fff;">'
+    . '<td style="width:50%;">'
+    . '<table cellpadding="1" style="border: 0.5px solid #fff;">'
     . '<tr>'
     . '<td style="text-align: left;font-weight: bold;" colspan="2">11. Intellectual Property</td>'
     . '</tr>'
     . '<tr>'
-    . '<td style="text-align: right; width:50px;" >I.</td>'
-    . '<td style="width:450px;">Where the Seller had designed, drawn or written Goods for the Client, then the copyright in those designs and
+    . '<td style="text-align: right; width:15%;" >I.</td>'
+    . '<td style="width:85%;">Where the Seller had designed, drawn or written Goods for the Client, then the copyright in those designs and
 drawings shall remain vested in the Seller and shall only be used by the Client at the Seller’s discretion.</td>'
     . '</tr>'
     . '<tr>'
@@ -958,8 +958,8 @@ registered design or trademark in the execution or the Client’s order.</td>'
     . '<td style="text-align: left; font-weight: bold;" colspan="2">12. Default & Consequence of default</td>'
     . '</tr>'
     . '<tr>'
-    . '<td style="text-align: right; width:50px;">I.</td>'
-    . '<td style="width:450px;">Interest on overdue invoices shall accrue from the date when payment becomes due daily until the date of
+    . '<td style="text-align: right; width:15%;">I.</td>'
+    . '<td style="width:85%;">Interest on overdue invoices shall accrue from the date when payment becomes due daily until the date of
         payment at a rate of 2.5% per calendar month and such interest shall compound monthly at such a rate after as
         well as before any judgement.</td>'
     . '</tr>'		

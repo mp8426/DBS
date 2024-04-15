@@ -361,7 +361,7 @@ while ($stmt_1->fetch()) {
                 $flooring_acc_calculation_total_table_colspan = $table_td_num_rows + $field_td_num_rows + $price_td_num_rows + $total_td_num_rows;
                 $flooring_acc_calculation_total = '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
                         . '<tr style="font-size: 0.9em;">'
-                        . '<th style="border: 0.5px solid #787877; width:80%; text-align: center; font-size:15px; vertical-align:middle;" rowspan="2" colspan="' . $flooring_acc_calculation_total_table_colspan . '"> <strong>'. $flooring_acc_calculation_name .'</strong> - <i>' . number_format($flooring_acc_calculation_quote_item_price_total + ($flooring_acc_calculation_quote_item_price_total/10), 2) . ' GST INC</i> </th>'
+                        . '<th style="border: 0.5px solid #787877; width:80%; text-align: center; font-size:15px; vertical-align:middle;" rowspan="3" colspan="' . $flooring_acc_calculation_total_table_colspan . '"> <strong>'. $flooring_acc_calculation_name .'</strong> - <i>' . number_format($flooring_acc_calculation_quote_item_price_total + ($flooring_acc_calculation_quote_item_price_total/10), 2) . ' GST INC</i> </th>'
                         . '<th style="border: 0.5px solid #787877; width:10%; text-align: right; font-weight: bold;" colspan="' . $flooring_acc_calculation_total_table_colspan . '">Sub Total </th>'
                         . '<th style="border: 0.5px solid #787877; width:10%; text-align: right; font-weight: bold;">' . number_format($flooring_acc_calculation_quote_item_price_sub_total, 2) . '</th>'
                         . '</tr>'

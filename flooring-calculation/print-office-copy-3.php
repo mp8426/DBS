@@ -36,17 +36,17 @@ while ($stmt_1->fetch()) {
     $stmt_2x->fetch();
     $stmt_2x->close();
 
-    $location_th = $locations_select === 1 && $location_print[0] === '1' ? '<th style="border: 0.5px solid #000000;">Location</th>' : '';
-    $unit_th = $unit_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">Unit</td>' : '';
-    $manufacturer_th = $manufacturer_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">Manufacturer</td>' : '';
-    $collection_th = $collection_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">Collection</td>' : '';
-    $colour_th = $colour_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">Colour</td>' : '';
-    $cost_th = $cost_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">Cost</td>' : '';
-    $markup_th = $markup_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">Markup</td>' : '';
+    $location_th = $locations_select === 1 && $location_print[0] === '1' ? '<th style="border: 0.5px solid #787877;">Location</th>' : '';
+    $unit_th = $unit_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">Unit</td>' : '';
+    $manufacturer_th = $manufacturer_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">Manufacturer</td>' : '';
+    $collection_th = $collection_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">Collection</td>' : '';
+    $colour_th = $colour_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">Colour</td>' : '';
+    $cost_th = $cost_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">Cost</td>' : '';
+    $markup_th = $markup_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">Markup</td>' : '';
     $field_th_right = '';
     $field_th_left = '';
-    $price_th = $price_print[0] === '1' ? '<th style="text-align: right; border: 0.5px solid #000000;">Price</th>' : '';
-    $total_th = $total_print[0] === '1' ? '<th style="text-align: right; border: 0.5px solid #000000;">Total</th>' : '';
+    $price_th = $price_print[0] === '1' ? '<th style="text-align: right; border: 0.5px solid #787877;">Price</th>' : '';
+    $total_th = $total_print[0] === '1' ? '<th style="text-align: right; border: 0.5px solid #787877;">Total</th>' : '';
 
     // Print sorted th to dynamic vatiables...
     $table_th = "";
@@ -64,27 +64,27 @@ while ($stmt_1->fetch()) {
 
     while ($stmt_2->fetch()) {
         if ($flooring_calculation_field_side === 0) { // Right Side
-            $field_th_right .= '<th style="border: 0.5px solid #000000;">' . $flooring_calculation_field_name . '</th>';
+            $field_th_right .= '<th style="border: 0.5px solid #787877;">' . $flooring_calculation_field_name . '</th>';
         }
         if ($flooring_calculation_field_side === 1) { // Left Side
-            $field_th_left .= '<th style="border: 0.5px solid #000000;">' . $flooring_calculation_field_name . '</th>';
+            $field_th_left .= '<th style="border: 0.5px solid #787877;">' . $flooring_calculation_field_name . '</th>';
         }
     }
     $stmt_2->close();
 
     $flooring_calculation_table_header = '<span nobr="true">'
-        . '<h3>' . $flooring_calculation_name . '</h3>'
-        . '<table cellpadding="4" cellspacing="0" style="text-align: center; background-color: #f1f1f1;">'
-        . '<tr style="font-size: 0.9em; font-weight: bold;">'
-        . '<th style="border: 0.5px solid #000000;">#</th>'
-        . $field_th_left
-        . $table_th
-        . $field_th_right
-        . $price_th
-        . $total_th
-        . '</tr>'
-        . '</table>'
-        . '</span>';
+            . '<h3>' . $flooring_calculation_name . '</h3>'
+            . '<table cellpadding="4" cellspacing="0" style="text-align: center; background-color: #f1f1f1;">'
+            . '<tr style="font-size: 0.9em; font-weight: bold;">'
+            . '<th style="border: 0.5px solid #787877;">#</th>'
+            . $field_th_left
+            . $table_th
+            . $field_th_right
+            . $price_th
+            . $total_th
+            . '</tr>'
+            . '</table>'
+            . '</span>';
 
 
     $quote_item_no = 1;
@@ -109,17 +109,17 @@ while ($stmt_1->fetch()) {
             $field_td_left = '';
 
             $query_3_1 = "SELECT flooring_calculation_quote_item_fields.name, "
-                . "flooring_calculation_quote_item_fields.price, "
-                . "flooring_calculation_fields.side "
-                . "FROM flooring_calculation_quote_item_fields "
-                . "JOIN flooring_calculation_fields ON "
-                . "flooring_calculation_fields.code = flooring_calculation_quote_item_fields.flooring_calculation_field_code "
-                . "WHERE "
-                . "flooring_calculation_fields.office_copy = 1 AND "
-                . "flooring_calculation_quote_item_fields.flooring_calculation_quote_item_code = ? AND "
-                . "flooring_calculation_quote_item_fields.flooring_calculation_code = ? AND "
-                . "flooring_calculation_quote_item_fields.cid = ? "
-                . "ORDER BY flooring_calculation_fields.position ASC";
+                    . "flooring_calculation_quote_item_fields.price, "
+                    . "flooring_calculation_fields.side "
+                    . "FROM flooring_calculation_quote_item_fields "
+                    . "JOIN flooring_calculation_fields ON "
+                    . "flooring_calculation_fields.code = flooring_calculation_quote_item_fields.flooring_calculation_field_code "
+                    . "WHERE "
+                    . "flooring_calculation_fields.office_copy = 1 AND "
+                    . "flooring_calculation_quote_item_fields.flooring_calculation_quote_item_code = ? AND "
+                    . "flooring_calculation_quote_item_fields.flooring_calculation_code = ? AND "
+                    . "flooring_calculation_quote_item_fields.cid = ? "
+                    . "ORDER BY flooring_calculation_fields.position ASC";
 
             $stmt_3_1 = $mysqli->prepare($query_3_1);
             $stmt_3_1->bind_param('sss', $flooring_calculation_quote_item_code, $flooring_calculation_code, $cid);
@@ -136,13 +136,13 @@ while ($stmt_1->fetch()) {
                     $flooring_calculation_quote_item_field_price_x = '';
                 }
 
-                //$field_td .= '<td style="border: 0.5px solid #000000;">' . $flooring_calculation_quote_item_field_name . '</td>';
+                //$field_td .= '<td style="border: 0.5px solid #787877;">' . $flooring_calculation_quote_item_field_name . '</td>';
 
                 if ($flooring_calculation_field_side === 0) { // Right Side
-                    $field_td_right .= '<td style="border: 0.5px solid #000000;">' . $flooring_calculation_quote_item_field_name . $flooring_calculation_quote_item_field_price_x . '</td>';
+                    $field_td_right .= '<td style="border: 0.5px solid #787877;">' . $flooring_calculation_quote_item_field_name . $flooring_calculation_quote_item_field_price_x . '</td>';
                 }
                 if ($flooring_calculation_field_side === 1) { // Left Side
-                    $field_td_left .= '<td style="border: 0.5px solid #000000;">' . $flooring_calculation_quote_item_field_name . $flooring_calculation_quote_item_field_price_x . '</td>';
+                    $field_td_left .= '<td style="border: 0.5px solid #787877;">' . $flooring_calculation_quote_item_field_name . $flooring_calculation_quote_item_field_price_x . '</td>';
                 }
             }
             $stmt_3_1->close();
@@ -161,11 +161,11 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_2->fetch()) {
 
                 $flooring_calculation_quote_item_accessories .= '<tr>'
-                    . '<td>' . $quote_item_accessory_no . '. ' . $flooring_calculation_quote_item_accessory_name . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: right;">' . $flooring_calculation_quote_item_accessory_price . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . $flooring_calculation_quote_item_accessory_qty . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . number_format($flooring_calculation_quote_item_accessory_total, 2) . '</td>'
-                    . '</tr>';
+                        . '<td>' . $quote_item_accessory_no . '. ' . $flooring_calculation_quote_item_accessory_name . '</td>'
+                        . '<td style="border: 0.5px solid #787877; text-align: right;">' . $flooring_calculation_quote_item_accessory_price . '</td>'
+                        . '<td style="border: 0.5px solid #787877; text-align: center;">' . $flooring_calculation_quote_item_accessory_qty . '</td>'
+                        . '<td style="border: 0.5px solid #787877; text-align: center;">' . number_format($flooring_calculation_quote_item_accessory_total, 2) . '</td>'
+                        . '</tr>';
                 $quote_item_accessory_no++;
             }
             $stmt_3_2->close();
@@ -184,11 +184,11 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_3->fetch()) {
 
                 $flooring_calculation_quote_item_per_meters .= '<tr>'
-                    . '<td>' . $quote_item_per_meter_no . '. ' . $flooring_calculation_quote_item_per_meter_name . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: right;">' . $flooring_calculation_quote_item_per_meter_price . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . $flooring_calculation_quote_item_per_meter_width . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . number_format($flooring_calculation_quote_item_per_meter_total, 2) . '</td>'
-                    . '</tr>';
+                        . '<td>' . $quote_item_per_meter_no . '. ' . $flooring_calculation_quote_item_per_meter_name . '</td>'
+                        . '<td style="border: 0.5px solid #787877; text-align: right;">' . $flooring_calculation_quote_item_per_meter_price . '</td>'
+                        . '<td style="border: 0.5px solid #787877; text-align: center;">' . $flooring_calculation_quote_item_per_meter_width . '</td>'
+                        . '<td style="border: 0.5px solid #787877; text-align: center;">' . number_format($flooring_calculation_quote_item_per_meter_total, 2) . '</td>'
+                        . '</tr>';
                 $quote_item_per_meter_no++;
             }
             $stmt_3_3->close();
@@ -207,9 +207,9 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_4->fetch()) {
 
                 $flooring_calculation_quote_item_fitting_charges .= '<tr>'
-                    . '<td style="border: 0.5px solid #000000;">' . $quote_item_fitting_charge_no . '. ' . $flooring_calculation_quote_item_fitting_charge_name . '</td>'
-                    . '<td style="border: 0.5px solid #000000; text-align: center;">' . number_format($flooring_calculation_quote_item_fitting_charge_price, 2) . '</td>'
-                    . '</tr>';
+                        . '<td style="border: 0.5px solid #787877;">' . $quote_item_fitting_charge_no . '. ' . $flooring_calculation_quote_item_fitting_charge_name . '</td>'
+                        . '<td style="border: 0.5px solid #787877; text-align: center;">' . number_format($flooring_calculation_quote_item_fitting_charge_price, 2) . '</td>'
+                        . '</tr>';
                 $quote_item_fitting_charge_no++;
             }
             $stmt_3_4->close();
@@ -231,15 +231,15 @@ while ($stmt_1->fetch()) {
                 $flooring_calculation_quote_item_collection_markup = 0;
             }
 
-            $location_td = $locations_select === 1 && $location_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $flooring_calculation_quote_item_location)[0] . '</td>' : '';
-            $unit_td = $unit_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">' . $flooring_calculation_quote_item_unit . '</td>' : '';
-            $manufacturer_td = $manufacturer_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $flooring_calculation_quote_item_manufacturer)[0] . '</td>' : '';
-            $collection_td = $collection_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $flooring_calculation_quote_item_collection)[0] . '</td>' : '';
-            $colour_td = $colour_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $flooring_calculation_quote_item_colour)[0] . '</td>' : '';
-            $cost_td = $cost_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">' . number_format($flooring_calculation_quote_item_collection_cost, 2) . '</td>' : '';
-            $markup_td = $markup_print[0] === '1' ? '<td style="border: 0.5px solid #000000;">' . $flooring_calculation_quote_item_collection_markup . '%</td>' : '';
-            $price_td = $price_print[0] === '1' ? '<td style="border: 0.5px solid #000000; text-align: right;">' . number_format($flooring_calculation_quote_item_price, 2) . '</td>' : '';
-            $total_td = $total_print[0] === '1' ? '<td style="border: 0.5px solid #000000; text-align: right;">' . number_format($flooring_calculation_quote_item_total, 2) . '</td>' : '';
+            $location_td = $locations_select === 1 && $location_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $flooring_calculation_quote_item_location)[0] . '</td>' : '';
+            $unit_td = $unit_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">' . $flooring_calculation_quote_item_unit . '</td>' : '';
+            $manufacturer_td = $manufacturer_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $flooring_calculation_quote_item_manufacturer)[0] . '</td>' : '';
+            $collection_td = $collection_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $flooring_calculation_quote_item_collection)[0] . '</td>' : '';
+            $colour_td = $colour_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $flooring_calculation_quote_item_colour)[0] . '</td>' : '';
+            $cost_td = $cost_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">' . number_format($flooring_calculation_quote_item_collection_cost, 2) . '</td>' : '';
+            $markup_td = $markup_print[0] === '1' ? '<td style="border: 0.5px solid #787877;">' . $flooring_calculation_quote_item_collection_markup . '%</td>' : '';
+            $price_td = $price_print[0] === '1' ? '<td style="border: 0.5px solid #787877; text-align: right;">' . number_format($flooring_calculation_quote_item_price, 2) . '</td>' : '';
+            $total_td = $total_print[0] === '1' ? '<td style="border: 0.5px solid #787877; text-align: right;">' . number_format($flooring_calculation_quote_item_total, 2) . '</td>' : '';
 
             $price_td_num_rows = $price_print[0] === '1' ? 1 : 0;
             $total_td_num_rows = $total_print[0] === '1' ? 1 : 0;
@@ -260,80 +260,79 @@ while ($stmt_1->fetch()) {
                 if ($flooring_calculation_quote_item_notes && $note_print[0] === '1') {
 
                     $flooring_calculation_quote_item_notes_table = '<table cellpadding="4" cellspacing="0" style="text-align: left;" nobr="true">'
-                        . '<tr>'
-                        . '<td style="border: 0.5px solid #000000;">'
-                        . nl2br($flooring_calculation_quote_item_notes)
-                        . '</td>'
-                        . '</tr>'
-                        . '</table>';
+                            . '<tr>'
+                            . '<td style="border: 0.5px solid #787877;">'
+                            . nl2br($flooring_calculation_quote_item_notes)
+                            . '</td>'
+                            . '</tr>'
+                            . '</table>';
                 } else {
                     $flooring_calculation_quote_item_notes_table = "";
                 }
 
                 if ($flooring_calculation_quote_item_accessories && $accessories_select === 1 && $accessory_print[0] === '1') {
 
-                    $flooring_calculation_quote_item_accessories_table = '<td style="border: 0.5px solid #000000;">'
-                        . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
-                        . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
-                        . '<th style="width: 60%; border: 0.5px solid #000000;">#. Accessory</th>'
-                        . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
-                        . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Qty</th>'
-                        . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
-                        . '</tr>'
-                        . $flooring_calculation_quote_item_accessories
-                        . '</table>'
-                        . '</td>';
+                    $flooring_calculation_quote_item_accessories_table = '<td style="border: 0.5px solid #787877;">'
+                            . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
+                            . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
+                            . '<th style="width: 60%; border: 0.5px solid #787877;">#. Accessory</th>'
+                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #787877;">Price</th>'
+                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #787877;">Qty</th>'
+                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #787877;">Total</th>'
+                            . '</tr>'
+                            . $flooring_calculation_quote_item_accessories
+                            . '</table>'
+                            . '</td>';
                 } else {
                     $flooring_calculation_quote_item_accessories_table = "";
                 }
 
                 if ($flooring_calculation_quote_item_per_meters && $per_meters_select === 1 && $per_meter_print[0] === '1') {
 
-                    $flooring_calculation_quote_item_per_meters_table = '<td style="border: 0.5px solid #000000;">'
-                        . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
-                        . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
-                        . '<th style="width: 60%; border: 0.5px solid #000000;">#. Per Meter</th>'
-                        . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
-                        . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Width</th>'
-                        . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
-                        . '</tr>'
-                        . $flooring_calculation_quote_item_per_meters
-                        . '</table>'
-                        . '</td>';
+                    $flooring_calculation_quote_item_per_meters_table = '<td style="border: 0.5px solid #787877;">'
+                            . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
+                            . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
+                            . '<th style="width: 60%; border: 0.5px solid #787877;">#. Per Meter</th>'
+                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #787877;">Price</th>'
+                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #787877;">Width</th>'
+                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #787877;">Total</th>'
+                            . '</tr>'
+                            . $flooring_calculation_quote_item_per_meters
+                            . '</table>'
+                            . '</td>';
                 } else {
                     $flooring_calculation_quote_item_per_meters_table = "";
                 }
 
                 if ($flooring_calculation_quote_item_fitting_charges && $fitting_charges_select === 1 && $fitting_charge_print[0] === '1') {
 
-                    $flooring_calculation_quote_item_fitting_charges_table = '<td style="border: 0.5px solid #000000;">'
-                        . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
-                        . '<tr style="font-weight: bold; background-color: #f2f2f2; border: 0.5px solid #000000;">'
-                        . '<th style="border: 0.5px solid #000000;">#. Fitting Charge</th>'
-                        . '<th style="text-align: center; border: 0.5px solid #000000;">Price</th>'
-                        . '</tr>'
-                        . $flooring_calculation_quote_item_fitting_charges
-                        . '</table>'
-                        . '</td>';
+                    $flooring_calculation_quote_item_fitting_charges_table = '<td style="border: 0.5px solid #787877;">'
+                            . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
+                            . '<tr style="font-weight: bold; background-color: #f2f2f2; border: 0.5px solid #787877;">'
+                            . '<th style="border: 0.5px solid #787877;">#. Fitting Charge</th>'
+                            . '<th style="text-align: center; border: 0.5px solid #787877;">Price</th>'
+                            . '</tr>'
+                            . $flooring_calculation_quote_item_fitting_charges
+                            . '</table>'
+                            . '</td>';
                 } else {
                     $flooring_calculation_quote_item_fitting_charges_table = "";
                 }
 
                 $table_more = $flooring_calculation_quote_item_notes_table;
 
-                if (
-                    $accessories_select === 1 && $accessory_print[0] === '1' && $flooring_calculation_quote_item_accessories ||
-                    $per_meters_select === 1 && $per_meter_print[0] === '1' && $flooring_calculation_quote_item_per_meters ||
-                    $fitting_charges_select === 1 && $fitting_charge_print[0] === '1' && $flooring_calculation_quote_item_fitting_charges
+                if ($accessories_select === 1 && $accessory_print[0] === '1' && $flooring_calculation_quote_item_accessories ||
+                        $per_meters_select === 1 && $per_meter_print[0] === '1' && $flooring_calculation_quote_item_per_meters ||
+                        $fitting_charges_select === 1 && $fitting_charge_print[0] === '1' && $flooring_calculation_quote_item_fitting_charges
                 ) {
 
                     $table_more .= '<table cellpadding="0" cellspacing="0" style="text-align: left;" nobr="true">'
-                        . '<tr style="font-size: 0.9em;">'
-                        . $flooring_calculation_quote_item_accessories_table
-                        . $flooring_calculation_quote_item_per_meters_table
-                        . $flooring_calculation_quote_item_fitting_charges_table
-                        . '</tr>'
-                        . '</table>';
+                            . '<tr style="font-size: 0.9em;">'
+                            . $flooring_calculation_quote_item_accessories_table
+                            . $flooring_calculation_quote_item_per_meters_table
+                            . $flooring_calculation_quote_item_fitting_charges_table
+                            . '</tr>'
+                            . '</table>';
                 } else {
                     $table_more .= "";
                 }
@@ -342,16 +341,16 @@ while ($stmt_1->fetch()) {
             }
 
             $flooring_calculation_quote_items .= '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
-                . '<tr style="font-size: 0.9em;">'
-                . '<td style="border: 0.5px solid #000000;">' . $quote_item_no . '</td>'
-                . $field_td_left
-                . $table_td
-                . $field_td_right
-                . $price_td
-                . $total_td
-                . '</tr>'
-                . '</table>'
-                . $table_more;
+                    . '<tr style="font-size: 0.9em;">'
+                    . '<td style="border: 0.5px solid #787877;">' . $quote_item_no . '</td>'
+                    . $field_td_left
+                    . $table_td
+                    . $field_td_right
+                    . $price_td
+                    . $total_td
+                    . '</tr>'
+                    . '</table>'
+                    . $table_more;
             $quote_item_no++;
 
             if ($group_discount_print[0] === '1') {
@@ -361,33 +360,26 @@ while ($stmt_1->fetch()) {
 
                 $flooring_calculation_total_table_colspan = $table_td_num_rows + $field_td_num_rows + $price_td_num_rows + $total_td_num_rows;
                 $flooring_calculation_total = '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
-                    . '<tr style="font-size: 0.9em;">'
-                    . '<th style="width:800px; border-top: 0.5px solid #616060; border-left: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#303030; font-size: 1.9em; text-align: center; font-weight: 14px; vertical-align: middle;" rowspan="3">' . $flooring_calculation_name . '</th>'
-                    . '<th style="width:100px;  border-top: 0.5px solid #616060; border-right: 0.5px solid #616060; color:#303030; text-align: right; font-weight: bold;" colspan="' . $flooring_calculation_total_table_colspan . '">Sub Total </th>'
-                    . '<th style="width:100px; border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($flooring_calculation_quote_item_price_sub_total, 2) . '</th>'
-                    . '</tr>'
-                    . '<tr style="font-size: 0.9em;">'
-                    . '<th style="border-top: 0.5px solid #616060; border-right: 0.5px solid #616060; border-bottom: 0.5px solid #616060; color:#277cbe; text-align: right; font-weight: bold;" colspan="' . $flooring_calculation_total_table_colspan . '">Discount (' . $flooring_calculation_quote_item_discount . '%) </th>'
-                    . '<th style="border: 0.5px solid #000000; color:#277cbe; text-align: right; font-weight: bold;">-' . number_format($flooring_calculation_quote_item_discount_value, 2) . '</th>'
-                    . '</tr>'
-                    // . '<tr style="font-size: 0.9em;">'
-                    // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $flooring_calculation_total_table_colspan . '">Total </th>'
-                    // . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($flooring_calculation_quote_item_price_total, 2) . '</th>'
-                    // . '</tr>'
-                    . '</table>';
+                        . '<tr style="font-size: 0.9em;">'
+                        . '<th style="border: 0.5px solid #787877; width:80%; text-align: center; font-size:15px; vertical-align:middle;" rowspan="8" colspan="' . $flooring_calculation_total_table_colspan . '"> <strong>'. $flooring_calculation_name .'</strong> - <i>' . number_format($flooring_calculation_quote_item_price_total + ($flooring_calculation_quote_item_price_total/10), 2) . ' GST INC</i> </th>'
+                        . '<th style="border: 0.5px solid #787877; width:10%; text-align: right; font-weight: bold;" colspan="' . $flooring_calculation_total_table_colspan . '">Sub Total (Blinds)</th>'
+                        . '<th style="border: 0.5px solid #787877; width:10%; text-align: right; font-weight: bold;">' . number_format($flooring_calculation_quote_item_price_sub_total, 2) . '</th>'
+                        . '</tr>'
+                        . '<tr style="font-size: 0.9em;">'
+                        . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold; color:#2d82c4;" colspan="' . $flooring_calculation_total_table_colspan . '">Discount (' . $flooring_calculation_quote_item_discount . '%) </th>'
+                        . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold; color:#2d82c4;">-' . number_format($flooring_calculation_quote_item_discount_value, 2) . '</th>'
+                        . '</tr>'
+                        . '<tr style="font-size: 0.9em;">'
+                        . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold;" colspan="' . $flooring_calculation_total_table_colspan . '">Total </th>'
+                        . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold;">' . number_format($flooring_calculation_quote_item_price_total, 2) . '</th>'
+                        . '</tr>'
+                        . '</table>';
             } else {
                 $flooring_calculation_total = '';
             }
         }
 
         $flooring_calculation_quote_tables .= $flooring_calculation_table_header . $flooring_calculation_quote_items . $flooring_calculation_total . "<div></div>";
-
-        // Add the item to the $price_list array
-        $price_list[] = array(
-            'p_name' => $flooring_calculation_name,
-            'quantity' => $quote_item_no,
-            'price' => number_format($flooring_calculation_quote_item_price_sub_total, 2)
-        );
     } else {
         $flooring_calculation_quote_tables .= "";
     }

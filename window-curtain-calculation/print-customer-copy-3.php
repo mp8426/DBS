@@ -35,27 +35,27 @@ while ($stmt_1->fetch()) {
     $stmt_2x->fetch();
     $stmt_2x->close();
 
-    $location_th = $locations_select === 1 && $location_print[1] === '1' ? '<th style="border: 0.5px solid #000000;">Location</th>' : '';
-    $width_th = $width_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Width</td>' : '';
-    $right_return_th = $right_return_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Right Return</td>' : '';
-    $left_return_th = $left_return_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Left Return</td>' : '';
-    $overlap_th = $overlap_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Overlap</td>' : '';
-    $fullness_th = $fullness_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Fullness</td>' : '';
-    $supplier_th = $supplier_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Supplier</td>' : '';
-    $fabric_th = $fabric_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Fabric</td>' : '';
-    $fabric_colour_th = $fabric_colour_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Colour</td>' : '';
-    $qty_drop_th = $qty_drop_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Qty Drop</td>' : '';
-    $curtain_type_1_th = $curtain_type_1_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Curtain Type 1</td>' : '';
-    $cont_meter_th = $cont_meter_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Cont. Meter</td>' : '';
-    $curtain_type_2_th = $curtain_type_2_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Curtain Type 2</td>' : '';
-    $drop_x_th = $drop_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Drop</td>' : '';
-    $hem_heading_th = $hem_heading_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Hem Heading</td>' : '';
-    $pattern_repeate_th = $pattern_repeate_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Pattern Repeate</td>' : '';
-    $fabric_cut_length_th = $fabric_cut_length_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Fabric Cut Length</td>' : '';
-    $fabric_qty_th = $fabric_qty_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">Fabric Qty</td>' : '';
+    $location_th = $locations_select === 1 && $location_print[1] === '1' ? '<th style="border: 0.5px solid #787877;">Location</th>' : '';
+    $width_th = $width_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Width</td>' : '';
+    $right_return_th = $right_return_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Right Return</td>' : '';
+    $left_return_th = $left_return_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Left Return</td>' : '';
+    $overlap_th = $overlap_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Overlap</td>' : '';
+    $fullness_th = $fullness_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Fullness</td>' : '';
+    $supplier_th = $supplier_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Supplier</td>' : '';
+    $fabric_th = $fabric_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Fabric</td>' : '';
+    $fabric_colour_th = $fabric_colour_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Colour</td>' : '';
+    $qty_drop_th = $qty_drop_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Qty Drop</td>' : '';
+    $curtain_type_1_th = $curtain_type_1_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Curtain Type 1</td>' : '';
+    $cont_meter_th = $cont_meter_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Cont. Meter</td>' : '';
+    $curtain_type_2_th = $curtain_type_2_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Curtain Type 2</td>' : '';
+    $drop_x_th = $drop_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Drop</td>' : '';
+    $hem_heading_th = $hem_heading_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Hem Heading</td>' : '';
+    $pattern_repeate_th = $pattern_repeate_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Pattern Repeate</td>' : '';
+    $fabric_cut_length_th = $fabric_cut_length_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Fabric Cut Length</td>' : '';
+    $fabric_qty_th = $fabric_qty_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">Fabric Qty</td>' : '';
     $field_th_right = '';
     $field_th_left = '';
-    $price_th = $price_print[1] === '1' ? '<th style="text-align: right; border: 0.5px solid #000000;">Price</th>' : '';
+    $price_th = $price_print[1] === '1' ? '<th style="text-align: right; border: 0.5px solid #787877;">Price</th>' : '';
 
     // Print sorted th to dynamic vatiables...
     $table_th = "";
@@ -73,19 +73,19 @@ while ($stmt_1->fetch()) {
 
     while ($stmt_2->fetch()) {
         if ($window_curtain_calculation_field_side === 0) { // Right Side
-            $field_th_right .= '<th style="border: 0.5px solid #000000;">' . $window_curtain_calculation_field_name . '</th>';
+            $field_th_right .= '<th style="border: 0.5px solid #787877;">' . $window_curtain_calculation_field_name . '</th>';
         }
         if ($window_curtain_calculation_field_side === 1) { // Left Side
-            $field_th_left .= '<th style="border: 0.5px solid #000000;">' . $window_curtain_calculation_field_name . '</th>';
+            $field_th_left .= '<th style="border: 0.5px solid #787877;">' . $window_curtain_calculation_field_name . '</th>';
         }
     }
     $stmt_2->close();
 
     $window_curtain_calculation_table_header = '<span nobr="true">'
-            . '<h3>' . $window_curtain_calculation_name . '</h3>'
+            . '<h1 style="color:#404040;">' . $window_curtain_calculation_name . '</h1>'
             . '<table cellpadding="4" cellspacing="0" style="text-align: center; background-color: #f1f1f1;">'
             . '<tr style="font-size: 0.9em; font-weight: bold;">'
-            . '<th style="border: 0.5px solid #000000;">#</th>'
+            . '<th style="border: 0.5px solid #787877;">#</th>'
             . $field_th_left
             . $table_th
             . $field_th_right
@@ -137,10 +137,10 @@ while ($stmt_1->fetch()) {
 
             while ($stmt_3_1->fetch()) {
                 if ($window_curtain_calculation_field_side === 0) { // Right Side
-                    $field_td_right .= '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_field_name . '</td>';
+                    $field_td_right .= '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_field_name . '</td>';
                 }
                 if ($window_curtain_calculation_field_side === 1) { // Left Side
-                    $field_td_left .= '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_field_name . '</td>';
+                    $field_td_left .= '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_field_name . '</td>';
                 }
             }
             $stmt_3_1->close();
@@ -159,10 +159,10 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_2->fetch()) {
 
                 $window_curtain_calculation_quote_item_accessories .= '<tr>'
-                        . '<td style="border: 0.5px solid #000000;">' . $quote_item_accessory_no . '. ' . $window_curtain_calculation_quote_item_accessory_name . '</td>'
-                        . '<td style="text-align: right; border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_accessory_price . '</td>'
-                        . '<td style="text-align: center; border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_accessory_qty . '</td>'
-                        . '<td style="text-align: center; border: 0.5px solid #000000;">' . number_format($window_curtain_calculation_quote_item_accessory_total, 2) . '</td>'
+                        . '<td style="border: 0.5px solid #787877;">' . $quote_item_accessory_no . '. ' . $window_curtain_calculation_quote_item_accessory_name . '</td>'
+                        . '<td style="text-align: right; border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_accessory_price . '</td>'
+                        . '<td style="text-align: center; border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_accessory_qty . '</td>'
+                        . '<td style="text-align: center; border: 0.5px solid #787877;">' . number_format($window_curtain_calculation_quote_item_accessory_total, 2) . '</td>'
                         . '</tr>';
                 $quote_item_accessory_no++;
             }
@@ -182,10 +182,10 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_3->fetch()) {
 
                 $window_curtain_calculation_quote_item_per_meters .= '<tr>'
-                        . '<td style="border: 0.5px solid #000000;">' . $quote_item_per_meter_no . '. ' . $window_curtain_calculation_quote_item_per_meter_name . '</td>'
-                        . '<td style="text-align: right; border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_per_meter_price . '</td>'
-                        . '<td style="text-align: center; border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_per_meter_width . '</td>'
-                        . '<td style="text-align: center; border: 0.5px solid #000000;">' . number_format($window_curtain_calculation_quote_item_per_meter_total, 2) . '</td>'
+                        . '<td style="border: 0.5px solid #787877;">' . $quote_item_per_meter_no . '. ' . $window_curtain_calculation_quote_item_per_meter_name . '</td>'
+                        . '<td style="text-align: right; border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_per_meter_price . '</td>'
+                        . '<td style="text-align: center; border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_per_meter_width . '</td>'
+                        . '<td style="text-align: center; border: 0.5px solid #787877;">' . number_format($window_curtain_calculation_quote_item_per_meter_total, 2) . '</td>'
                         . '</tr>';
                 $quote_item_per_meter_no++;
             }
@@ -205,32 +205,32 @@ while ($stmt_1->fetch()) {
             while ($stmt_3_4->fetch()) {
 
                 $window_curtain_calculation_quote_item_fitting_charges .= '<tr>'
-                        . '<td style="border: 0.5px solid #000000;">' . $quote_item_fitting_charge_no . '. ' . $window_curtain_calculation_quote_item_fitting_charge_name . '</td>'
-                        . '<td style="text-align: center; border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_fitting_charge_price . '</td>'
+                        . '<td style="border: 0.5px solid #787877;">' . $quote_item_fitting_charge_no . '. ' . $window_curtain_calculation_quote_item_fitting_charge_name . '</td>'
+                        . '<td style="text-align: center; border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_fitting_charge_price . '</td>'
                         . '</tr>';
                 $quote_item_fitting_charge_no++;
             }
             $stmt_3_4->close();
 
-            $location_td = $locations_select === 1 && $location_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $window_curtain_calculation_quote_item_location)[0] . '</td>' : '';
-            $width_td = $width_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_width . '</td>' : '';
-            $right_return_td = $right_return_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_right_return . '</td>' : '';
-            $left_return_td = $right_return_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_left_return . '</td>' : '';
-            $overlap_td = $overlap_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_overlap . '</td>' : '';
-            $fullness_td = $fullness_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_fullness . '</td>' : '';
-            $supplier_td = $supplier_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $window_curtain_calculation_quote_item_supplier)[0] . '</td>' : '';
-            $fabric_td = $fabric_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $window_curtain_calculation_quote_item_fabric)[0] . '</td>' : '';
-            $fabric_colour_td = $fabric_colour_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $window_curtain_calculation_quote_item_fabric_colour)[0] . '</td>' : '';
-            $qty_drop_td = $qty_drop_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_qty_drop . '</td>' : '';
-            $curtain_type_1_td = $curtain_type_1_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $window_curtain_calculation_quote_item_curtain_type_1)[0] . '</td>' : '';
-            $cont_meter_td = $cont_meter_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_continuous_meter . '</td>' : '';
-            $curtain_type_2_td = $curtain_type_2_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . explode('<->', $window_curtain_calculation_quote_item_curtain_type_2)[0] . '</td>' : '';
-            $drop_x_td = $drop_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_drop . '</td>' : '';
-            $hem_heading_td = $hem_heading_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_hem_heading . '</td>' : '';
-            $pattern_repeate_td = $pattern_repeate_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_pattern_repeate . '</td>' : '';
-            $fabric_cut_length_td = $fabric_cut_length_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_fabric_cut_length . '</td>' : '';
-            $fabric_qty_td = $fabric_qty_print[1] === '1' ? '<td style="border: 0.5px solid #000000;">' . $window_curtain_calculation_quote_item_fabric_qty . '</td>' : '';
-            $price_td = $price_print[1] === '1' ? '<td style="text-align: right; border: 0.5px solid #000000;">' . number_format($window_curtain_calculation_quote_item_price, 2) . '</td>' : '';
+            $location_td = $locations_select === 1 && $location_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $window_curtain_calculation_quote_item_location)[0] . '</td>' : '';
+            $width_td = $width_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_width . '</td>' : '';
+            $right_return_td = $right_return_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_right_return . '</td>' : '';
+            $left_return_td = $right_return_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_left_return . '</td>' : '';
+            $overlap_td = $overlap_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_overlap . '</td>' : '';
+            $fullness_td = $fullness_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_fullness . '</td>' : '';
+            $supplier_td = $supplier_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $window_curtain_calculation_quote_item_supplier)[0] . '</td>' : '';
+            $fabric_td = $fabric_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $window_curtain_calculation_quote_item_fabric)[0] . '</td>' : '';
+            $fabric_colour_td = $fabric_colour_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $window_curtain_calculation_quote_item_fabric_colour)[0] . '</td>' : '';
+            $qty_drop_td = $qty_drop_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_qty_drop . '</td>' : '';
+            $curtain_type_1_td = $curtain_type_1_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $window_curtain_calculation_quote_item_curtain_type_1)[0] . '</td>' : '';
+            $cont_meter_td = $cont_meter_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_continuous_meter . '</td>' : '';
+            $curtain_type_2_td = $curtain_type_2_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . explode('<->', $window_curtain_calculation_quote_item_curtain_type_2)[0] . '</td>' : '';
+            $drop_x_td = $drop_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_drop . '</td>' : '';
+            $hem_heading_td = $hem_heading_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_hem_heading . '</td>' : '';
+            $pattern_repeate_td = $pattern_repeate_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_pattern_repeate . '</td>' : '';
+            $fabric_cut_length_td = $fabric_cut_length_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_fabric_cut_length . '</td>' : '';
+            $fabric_qty_td = $fabric_qty_print[1] === '1' ? '<td style="border: 0.5px solid #787877;">' . $window_curtain_calculation_quote_item_fabric_qty . '</td>' : '';
+            $price_td = $price_print[1] === '1' ? '<td style="text-align: right; border: 0.5px solid #787877;">' . number_format($window_curtain_calculation_quote_item_price, 2) . '</td>' : '';
 
             $price_td_num_rows = $price_print[1] === '1' ? 1 : 0;
 
@@ -251,7 +251,7 @@ while ($stmt_1->fetch()) {
 
                     $window_curtain_calculation_quote_item_notes_table = '<table cellpadding="4" cellspacing="0" style="text-align: left;" nobr="true">'
                             . '<tr>'
-                            . '<td style="border: 0.5px solid #000000;">'
+                            . '<td style="border: 0.5px solid #787877;">'
                             . nl2br($window_curtain_calculation_quote_item_notes)
                             . '</td>'
                             . '</tr>'
@@ -262,13 +262,13 @@ while ($stmt_1->fetch()) {
 
                 if ($window_curtain_calculation_quote_item_accessories && $accessories_select === 1 && $accessory_print[1] === '1') {
 
-                    $window_curtain_calculation_quote_item_accessories_table = '<td style="border: 0.5px solid #000000;">'
+                    $window_curtain_calculation_quote_item_accessories_table = '<td style="border: 0.5px solid #787877;">'
                             . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
                             . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
-                            . '<th style="width: 60%; border: 0.5px solid #000000;">#. Accessory</th>'
-                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
-                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Qty</th>'
-                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
+                            . '<th style="width: 60%; border: 0.5px solid #787877;">#. Accessory</th>'
+                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #787877;">Price</th>'
+                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #787877;">Qty</th>'
+                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #787877;">Total</th>'
                             . '</tr>'
                             . $window_curtain_calculation_quote_item_accessories
                             . '</table>'
@@ -279,13 +279,13 @@ while ($stmt_1->fetch()) {
 
                 if ($window_curtain_calculation_quote_item_per_meters && $per_meters_select === 1 && $per_meter_print[1] === '1') {
 
-                    $window_curtain_calculation_quote_item_per_meters_table = '<td style="border: 0.5px solid #000000;">'
+                    $window_curtain_calculation_quote_item_per_meters_table = '<td style="border: 0.5px solid #787877;">'
                             . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
                             . '<tr style="font-weight: bold; background-color: #f2f2f2;">'
-                            . '<th style="width: 60%; border: 0.5px solid #000000;">#. Per Meter</th>'
-                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #000000;">Price</th>'
-                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #000000;">Width</th>'
-                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #000000;">Total</th>'
+                            . '<th style="width: 60%; border: 0.5px solid #787877;">#. Per Meter</th>'
+                            . '<th style="width: 15%; text-align: right; border: 0.5px solid #787877;">Price</th>'
+                            . '<th style="width: 10%; text-align: center; border: 0.5px solid #787877;">Width</th>'
+                            . '<th style="width: 15%; text-align: center; border: 0.5px solid #787877;">Total</th>'
                             . '</tr>'
                             . $window_curtain_calculation_quote_item_per_meters
                             . '</table>'
@@ -296,11 +296,11 @@ while ($stmt_1->fetch()) {
 
                 if ($window_curtain_calculation_quote_item_fitting_charges && $fitting_charges_select === 1 && $fitting_charge_print[1] === '1') {
 
-                    $window_curtain_calculation_quote_item_fitting_charges_table = '<td style="border: 0.5px solid #000000;">'
+                    $window_curtain_calculation_quote_item_fitting_charges_table = '<td style="border: 0.5px solid #787877;">'
                             . '<table cellpadding="4" cellspacing="0" style="line-height: 6px;">'
-                            . '<tr style="font-weight: bold; background-color: #f2f2f2; border: 0.5px solid #000000;">'
-                            . '<th style="border: 0.5px solid #000000;">#. Fitting Charge</th>'
-                            . '<th style="text-align: center; border: 0.5px solid #000000;">Price</th>'
+                            . '<tr style="font-weight: bold; background-color: #f2f2f2; border: 0.5px solid #787877;">'
+                            . '<th style="border: 0.5px solid #787877;">#. Fitting Charge</th>'
+                            . '<th style="text-align: center; border: 0.5px solid #787877;">Price</th>'
                             . '</tr>'
                             . $window_curtain_calculation_quote_item_fitting_charges
                             . '</table>'
@@ -332,7 +332,7 @@ while ($stmt_1->fetch()) {
 
             $window_curtain_calculation_quote_items .= '<table cellpadding="4" cellspacing="0"  style="text-align: center;" nobr="true">'
                     . '<tr style="font-size: 0.9em;">'
-                    . '<td style="border: 0.5px solid #000000;">' . $quote_item_no . '</td>'
+                    . '<td style="border: 0.5px solid #787877;">' . $quote_item_no . '</td>'
                     . $field_td_left
                     . $table_td
                     . $field_td_right
@@ -349,18 +349,19 @@ while ($stmt_1->fetch()) {
 
                 $window_curtain_calculation_total_table_colspan = $table_td_num_rows + $field_td_num_rows + $price_td_num_rows;
                 $window_curtain_calculation_total = '<table cellpadding="4" cellspacing="0" style="text-align: center;" nobr="true">'
-                        . '<tr style="font-size: 0.9em;">'
-                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_curtain_calculation_total_table_colspan . '">Sub Total </th>'
-                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($window_curtain_calculation_quote_item_price_sub_total, 2) . '</th>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #787877; width:80%; text-align: center; font-size:15px; vertical-align:middle;" rowspan="8" colspan="' . $window_curtain_calculation_total_table_colspan . '"> <strong>'. $window_curtain_calculation_name .'</strong> - <i>' . number_format($window_curtain_calculation_quote_item_price_total + ($window_curtain_calculation_quote_item_price_total/10), 2) . ' GST INC</i> </th>'
+                        . '<th style="border: 0.5px solid #787877; width:10%; text-align: right; font-weight: bold;" colspan="' . $window_curtain_calculation_total_table_colspan . '">Sub Total (Blinds)</th>'
+                        . '<th style="border: 0.5px solid #787877; width:10%; text-align: right; font-weight: bold;">' . number_format($window_curtain_calculation_quote_item_price_sub_total, 2) . '</th>'
                         . '</tr>'
-                        . '<tr style="font-size: 0.9em;">'
-                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_curtain_calculation_total_table_colspan . '">Discount (' . $window_curtain_calculation_quote_item_discount . '%) </th>'
-                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">-' . number_format($window_curtain_calculation_quote_item_discount_value, 2) . '</th>'
+                        . '<tr style="font-size: 1em;">'
+                        . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold; color:#2d82c4;" colspan="' . $window_curtain_calculation_total_table_colspan . '">Discount (' . $window_curtain_calculation_quote_item_discount . '%) </th>'
+                        . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold; color:#2d82c4;">-' . number_format($window_curtain_calculation_quote_item_discount_value, 2) . '</th>'
                         . '</tr>'
-                        . '<tr style="font-size: 0.9em;">'
-                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;" colspan="' . $window_curtain_calculation_total_table_colspan . '">Total </th>'
-                        . '<th style="border: 0.5px solid #000000; text-align: right; font-weight: bold;">' . number_format($window_curtain_calculation_quote_item_price_total, 2) . '</th>'
-                        . '</tr>'
+                        // . '<tr style="font-size: 0.9em;">'
+                        // . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold;" colspan="' . $window_curtain_calculation_total_table_colspan . '">Total </th>'
+                        // . '<th style="border: 0.5px solid #787877; text-align: right; font-weight: bold;">' . number_format($window_curtain_calculation_quote_item_price_total, 2) . '</th>'
+                        // . '</tr>'
                         . '</table>';
             } else {
                 $window_curtain_calculation_total = '';
@@ -368,6 +369,12 @@ while ($stmt_1->fetch()) {
         }
 
         $window_curtain_calculation_quote_tables .= $window_curtain_calculation_table_header . $window_curtain_calculation_quote_items . $window_curtain_calculation_total . "<div></div>";
+        $price_list[] = array(
+            'p_name' => $window_curtain_calculation_name,
+            'quantity' => $quote_item_no,
+            'price' => number_format($window_curtain_calculation_quote_item_price_sub_total, 2)
+        );
+    
     } else {
         $window_curtain_calculation_quote_tables .= "";
     }

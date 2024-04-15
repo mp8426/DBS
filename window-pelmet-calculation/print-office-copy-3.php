@@ -352,6 +352,11 @@ while ($stmt_1->fetch()) {
         }
 
         $window_pelmet_calculation_quote_tables .= $window_pelmet_calculation_table_header . $window_pelmet_calculation_quote_items . $window_pelmet_calculation_total . "<div></div>";
+        $price_list[] = array(
+            'p_name' => $window_pelmet_calculation_name,
+            'quantity' => $quote_item_no,
+            'price' => number_format($window_pelmet_calculation_quote_item_price_sub_total, 2)
+        );
     } else {
         $window_pelmet_calculation_quote_tables .= "";
     }
